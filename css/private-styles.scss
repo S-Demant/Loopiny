@@ -50,7 +50,7 @@ body, html {
   font-weight: 400;
   font-style: normal;
   line-height: 1.6;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.4px;
 }
 
 header {
@@ -59,3 +59,10 @@ header {
   }
 }
 
+.offcanvas {
+  --bs-offcanvas-width: 70%;
+
+  @include breakpoint($small) {
+    --bs-offcanvas-width: 350px;
+  }
+}

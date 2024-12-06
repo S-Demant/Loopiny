@@ -22,55 +22,7 @@ require "../settings/init.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<header>
-    <nav class="topnav align-content-center bg-light shadow fixed-top">
-        <div class="container">
-
-            <div class="d-flex justify-content-between">
-                <a href="discover.php" class="my-auto"><img src="../img/loopiny/loopiny-logo-top.webp"></a>
-                <div class="d-flex gap-3">
-                    <a href="#" class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrer &#9662;</a>
-                    <a href="#" class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarSort" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sorter &#9662;</a>
-                </div>
-            </div>
-
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarFilter" aria-labelledby="Filtrer listen">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="navbarFilterLabel">Filtrer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Luk"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Linker</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarSort" aria-labelledby="Sorter listen">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="navbarSortLabel">Sorter</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Luk"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-</header>
+<?php include("header-options.php"); ?>
 
 <body>
 <div class="container mt-5">
@@ -79,5 +31,6 @@ require "../settings/init.php";
 
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
