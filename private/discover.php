@@ -22,13 +22,19 @@ require "../settings/init.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
+<body>
+
 <?php include("header-options.php"); ?>
 
-<body>
-<div class="container mt-5">
-    <h1 class="text-primary">Ny test</h1>
-</div>
+<article>
+    <section>
+        <div class="container">
+            <h1 class="text-primary">Ny test</h1>
+        </div>
+    </section>
+</article>
 
+<?php include("footer.php"); ?>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -56,7 +56,27 @@ body, html {
 header {
   .topnav {
     height: 50px;
+    z-index: 999;
   }
+}
+
+footer {
+  .bottomnav {
+    height: 100px;
+    z-index: 99;
+  }
+
+  .icons {
+    height: 30px;
+
+    @include breakpoint($small) {
+      height: 45px;
+    }
+  }
+}
+
+article {
+  margin-top: 4.5rem;
 }
 
 .offcanvas {
