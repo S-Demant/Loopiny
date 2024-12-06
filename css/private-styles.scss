@@ -9,6 +9,7 @@ $light: #F5F5F0;
 $dark: #242424;
 // Links
 $link-decoration: none;
+$link-shade-percentage: 70%; // Hvor meget hver link er fadet ud inden hover
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
@@ -16,10 +17,10 @@ $link-decoration: none;
 
 // 4. Include any default map overrides here
 $custom-colors: (
-				"primary": $primary,
-				"secondary": $secondary,
-				"light": $light,
-				"dark": $dark
+        "primary": $primary,
+        "secondary": $secondary,
+        "light": $light,
+        "dark": $dark
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
@@ -34,20 +35,27 @@ $xtraLarge: 1200px;
 $xxtraLarge: 1400px;
 
 @mixin breakpoint($breakpoint) {
-	@media (min-width: $breakpoint) {
-		@content;
-	}
+  @media (min-width: $breakpoint) {
+    @content;
+  }
 }
 
 body, html {
-	margin: 0;
-	padding: 0;
-	background-color: $light;
-	color: $dark;
-	font-family: "Glory", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 1.6;
-	letter-spacing: 0.2px;
+  margin: 0;
+  padding: 0;
+  background-color: $light;
+  color: $dark;
+  font-family: "Glory", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
 }
+
+header {
+  .topnav {
+    height: 50px;
+  }
+}
+

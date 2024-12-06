@@ -1,4 +1,5 @@
 <?php
+require "classes/classDB.php";
 require "settings/init.php";
 ?>
 <!DOCTYPE html>
@@ -17,38 +18,11 @@ require "settings/init.php";
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body
+<body>
 <h1> hej </h1>
 <div class="row g-2">
-	<?php
-	$produkter = $db->sql("SELECT * FROM produkter");
-	foreach($produkter as $produkt) {
-		?>
-		<div class="col-12 col-md-6">
-			<div class="card w-100">
-				<div class="card-header">
-					<?php
-					echo $produkt->prodNavn;
-					?>
-				</div>
-				<div class="card-body">
-					<?php
-					// Indsæt andet felt fra database
-					?>
-				</div>
-				<div class="card-footer text-muted">
-					<?php
-					// Indsæt andet felt fra database
-					?>
-				</div>
-			</div>
-		</div>
-		<?php
-	}
-	?>
 
     <div>
-
         <p> test </p>
     </div>
 </div>
