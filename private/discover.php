@@ -30,6 +30,9 @@ require "../settings/init.php";
     <section>
         <div class="container">
             <h1 class="text-primary">Ny test</h1>
+            <h2 class="fw-semibold">H2 tekst her</h2>
+            <h3 class="fw-semibold">H3 tekst her</h3>
+            <p>Tekstens størrelse burde ændre sig</p>
         </div>
     </section>
 </article>
