@@ -5,22 +5,22 @@
                 <div class="position-relative align-content-center w-100 pt-1">
                     <object type="image/svg+xml" data="../img/icons/demo-icon.svg" class="icons"></object>
                     <br>
-                    <a href="#" class="stretched-link fw-semibold text-dark" aria-label="Opdag">Opdag</a>
+                    <a href="#" class="stretched-link text-dark" aria-label="Opdag">Opdag</a>
                 </div>
                 <div class="position-relative align-content-center w-100 pt-1">
                     <object type="image/svg+xml" data="../img/icons/demo-icon.svg" class="icons"></object>
                     <br>
-                    <a href="#" class="stretched-link fw-semibold text-dark" aria-label="Favoritter">Favoritter</a>
+                    <a href="#" class="stretched-link text-dark" aria-label="Favoritter">Favoritter</a>
                 </div>
                 <div class="position-relative align-content-center w-100 pt-1">
                     <object type="image/svg+xml" data="../img/icons/demo-icon.svg" class="icons"></object>
                     <br>
-                    <a href="#" class="stretched-link fw-semibold text-dark" aria-label="Oversigt">Oversigt</a>
+                    <a href="#" class="stretched-link text-dark" aria-label="Oversigt">Oversigt</a>
                 </div>
                 <div class="position-relative align-content-center w-100 pt-1">
                     <object type="image/svg+xml" data="../img/icons/demo-icon.svg" class="icons"></object>
                     <br>
-                    <a href="#" class="stretched-link fw-semibold text-dark" aria-label="Indstillinger">Indstillinger</a>
+                    <a href="#" class="stretched-link text-dark" aria-label="Indstillinger">Indstillinger</a>
                 </div>
             </div>
         </div>

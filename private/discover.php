@@ -29,10 +29,25 @@ require "../settings/init.php";
 <article>
     <section>
         <div class="container">
-            <h1 class="text-primary">Ny test</h1>
-            <h2 class="fw-semibold">H2 tekst her</h2>
-            <h3 class="fw-semibold">H3 tekst her</h3>
-            <p>Tekstens størrelse burde ændre sig</p>
+            <div class="text-center">
+                <h2 class="text-primary fw-semibold mb-0">Produkter der er klar til at blive reddet nær dig</h2>
+                <span>Inden for 8 km. fra 4400 Kalundborg</span>
+            </div>
+            <form>
+                <div class="d-flex text-center my-2">
+                    <input type="radio" class="btn-check btn-pick" name="pick" id="products" autocomplete="off" checked>
+                    <label class="btn btn-primary border-2 border-light rounded-start-4 py-2 px-4 w-100" for="products">Produkter</label>
+
+                    <input type="radio" class="btn-check btn-pick" name="pick" id="stores" autocomplete="off">
+                    <label class="btn btn-primary border-2 border-light rounded-end-4 py-2 px-4 w-100" for="stores">Butikker</label>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+
         </div>
     </section>
 </article>

@@ -6,8 +6,8 @@
                 <a href="discover.php" class="my-auto"><img src="../img/loopiny/loopiny-logo-top.webp"></a>
 
                 <div class="d-flex gap-3">
-                    <a href="#" class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrér &#9662;</a>
-                    <a href="#" class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarSort" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</a>
+                    <a href="#" class="my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrér &#9662;</a>
+                    <a href="#" class="my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarSort" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</a>
                 </div>
             </div>
 

@@ -12,12 +12,8 @@ $link-decoration: none;
 $link-shade-percentage: 70%; // Hvor meget hver link er fadet ud inden hover
 //Fonts
 $font-size-base:              1rem;
-$h1-font-size:                $font-size-base * 1.75;
-$h2-font-size:                $font-size-base * 1.25;
+$h2-font-size:                $font-size-base * 1.05;
 $h3-font-size:                $font-size-base;
-$h4-font-size:                $font-size-base;
-$h5-font-size:                $font-size-base;
-$h6-font-size:                $font-size-base;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
@@ -89,13 +85,27 @@ footer {
 }
 
 article {
-  margin-top: 4.5rem;
+  margin-top: 4.7rem;
 }
 
+a, .btn {
+  font-weight: 600;
+}
+
+// Top-menu drop"down"
 .offcanvas {
   --bs-offcanvas-width: 70%;
 
   @include breakpoint($small) {
     --bs-offcanvas-width: 350px;
   }
+}
+
+// Knapper for valg mellem produkter og butikker
+.btn-pick + .btn {
+  opacity: 0.5;
+}
+
+.btn-pick:checked + .btn {
+  opacity: 1;
 }
