@@ -47,7 +47,68 @@ require "../settings/init.php";
 
     <section>
         <div class="container">
-
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
+                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                        <div class="p-2 my-2">
+                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
+                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary fw-semibold">70 DKK</span>
+                                <span class="text-dark fw-semibold opacity-50">-81%</span>
+                            </div>
+                            <hr class="opacity-25">
+                            <span class="">InterSport Kalundborg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
+                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                        <div class="p-2 my-2">
+                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
+                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary fw-semibold">70 DKK</span>
+                                <span class="text-dark fw-semibold opacity-50">-81%</span>
+                            </div>
+                            <hr class="opacity-25">
+                            <span class="">InterSport Kalundborg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
+                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                        <div class="p-2 my-2">
+                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
+                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary fw-semibold">70 DKK</span>
+                                <span class="text-dark fw-semibold opacity-50">-81%</span>
+                            </div>
+                            <hr class="opacity-25">
+                            <span class="">InterSport Kalundborg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
+                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                        <div class="p-2 my-2">
+                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
+                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary fw-semibold">70 DKK</span>
+                                <span class="text-dark fw-semibold opacity-50">-81%</span>
+                            </div>
+                            <hr class="opacity-25">
+                            <span class="">InterSport Kalundborg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </article>

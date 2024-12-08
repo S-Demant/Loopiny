@@ -53,7 +53,7 @@ body, html {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  line-height: 1.6rem;
+  line-height: 1.1rem;
   letter-spacing: .4px;
   font-size: calc($font-size-base * .75 + 0.6vw);
 
@@ -82,6 +82,10 @@ footer {
       height: 45px;
     }
   }
+
+  .margin-to-top {
+    margin-top: 120px;
+  }
 }
 
 article {
@@ -108,4 +112,13 @@ a, .btn {
 
 .btn-pick:checked + .btn {
   opacity: 1;
+}
+
+// Loop-card
+.loop-card {
+  border-radius: 20px 0 20px 0;
+
+    img {
+      border-top-left-radius: 20px;
+    }
 }

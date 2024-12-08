@@ -1,4 +1,5 @@
 <footer>
+    <div class="margin-to-top"></div>
     <nav class="bottomnav align-content-center bg-light shadow-lg fixed-bottom">
         <div class="container h-100">
             <div class="d-flex text-center w-100 h-100 gap-3">
