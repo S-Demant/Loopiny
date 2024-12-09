@@ -49,21 +49,26 @@ require "../settings/init.php";
         <div class="container">
             <div class="row g-3">
                 <?php
-                $products = $db->sql("SELECT * FROM products ORDER BY productId ASC");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(categoryName SEPARATOR ', ') AS categoryName FROM products INNER JOIN connect_products_categories ON productId = productIdConnect INNER JOIN categories ON categoryId = categoryIdConnect ORDER BY productId ASC ");
                 foreach($products as $product) {
-                ?>
+                    ?>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
+                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100">
                         <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
                         <div class="p-2 my-2">
                             <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
                             <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
-                            <div class="d-flex justify-content-between">
-                                <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
-                                <span class="text-dark fw-semibold opacity-50">-81%</span>
+                            <span class="text-secondary fw-semibold"><?php echo $product->categoryName ?></span>
+                            <div class="d-flex justify-content-center">
+                                <div class="position-absolute bottom-0 p-2 pb-3 w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
+                                        <span class="text-dark fw-semibold opacity-50">-81%</span>
+                                    </div>
+                                    <hr class="opacity-25">
+                                    <span>InterSport Kalundborg</span>
+                                </div>
                             </div>
-                            <hr class="opacity-25">
-                            <span class="">InterSport Kalundborg</span>
                         </div>
                     </div>
                 </div>
@@ -118,6 +123,7 @@ require "../settings/init.php";
             </div>
         </div>
     </section>
+
 </article>
 
 <?php include("footer.php"); ?>
