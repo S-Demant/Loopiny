@@ -98,6 +98,7 @@ a, .btn {
 
 // Top-menu drop"down"
 .offcanvas {
+  line-height: 1.4rem;
   --bs-offcanvas-width: 70%;
 
   @include breakpoint($small) {

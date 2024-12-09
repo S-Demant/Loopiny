@@ -34,7 +34,7 @@ require "../settings/init.php";
                 <span>Inden for 8 km. fra 4400 Kalundborg</span>
             </div>
             <form>
-                <div class="d-flex text-center my-2">
+                <div class="d-flex text-center mt-2 mb-3">
                     <input type="radio" class="btn-check btn-pick" name="pick" id="products" autocomplete="off" checked>
                     <label class="btn btn-primary border-2 border-light rounded-start-4 py-2 px-4 w-100" for="products">Produkter</label>
 
@@ -48,14 +48,18 @@ require "../settings/init.php";
     <section>
         <div class="container">
             <div class="row g-3">
+                <?php
+                $products = $db->sql("SELECT * FROM products ORDER BY productId ASC");
+                foreach($products as $product) {
+                ?>
                 <div class="col-6 col-md-4 col-lg-3">
                     <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
                         <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
                         <div class="p-2 my-2">
-                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
+                            <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
                             <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
                             <div class="d-flex justify-content-between">
-                                <span class="text-secondary fw-semibold">70 DKK</span>
+                                <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
                                 <span class="text-dark fw-semibold opacity-50">-81%</span>
                             </div>
                             <hr class="opacity-25">
@@ -63,6 +67,9 @@ require "../settings/init.php";
                         </div>
                     </div>
                 </div>
+                    <?php
+                }
+                ?>
                 <div class="col-6 col-md-4 col-lg-3">
                     <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
                         <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">

@@ -47,50 +47,17 @@
                     <form id="categoryForm">
                         <div class="mb-3">
                             <span class="fw-semibold">Kategorier</span>
+                            <?php
+                            $categories = $db->sql("SELECT * FROM categories ORDER BY categoryId ASC");
+                            foreach($categories as $category) {
+                            ?>
                             <div class="form-check py-1 mt-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkAccessories" checked>
-                                <label class="form-check-label" for="checkAccessories">Accessories</label>
+                                <input class="form-check-input" type="checkbox" value="" id="check<?php echo $category->categoryName ?>" checked>
+                                <label class="form-check-label" for="check<?php echo $category->categoryName ?>"><?php echo $category->categoryName ?></label>
                             </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkElektronik" checked>
-                                <label class="form-check-label" for="checkElektronik">Elektronik</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkHårdeHvidevarer" checked>
-                                <label class="form-check-label" for="checkHårdeHvidevarer">Hårde hvidevarer</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkHusholdningsapparater" checked>
-                                <label class="form-check-label" for="checkHusholdningsapparater">Husholdningsapparater</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkLegetøj" checked>
-                                <label class="form-check-label" for="checkLegetøj">Legetøj</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkMøbler&Interiør" checked>
-                                <label class="form-check-label" for="checkMøbler&Interiør">Møbler & interiør</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkSko" checked>
-                                <label class="form-check-label" for="checkSko">Sko</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkTilHaven" checked>
-                                <label class="form-check-label" for="checkTilHaven">Til haven</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkTøj" checked>
-                                <label class="form-check-label" for="checkTøj">Tøj</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkUnderholdning" checked>
-                                <label class="form-check-label" for="checkUnderholdning">Underholdning</label>
-                            </div>
-                            <div class="form-check py-1">
-                                <input class="form-check-input" type="checkbox" value="" id="checkAndet" checked>
-                                <label class="form-check-label" for="checkAndet">Andet</label>
-                            </div>
+                                <?php
+                            }
+                            ?>
                             <div class="d-flex gap-3 mt-3">
                                 <button type="button" class="btn btn-primary fw-semibold rounded-3 w-100" id="checkAll">Markér alle</button>
                                 <button type="button" class="btn btn-primary fw-semibold rounded-3 w-100" id="uncheckAll">Afmarkér alle</button>
