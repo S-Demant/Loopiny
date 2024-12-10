@@ -6,8 +6,8 @@
                 <a href="discover.php" class="my-auto"><img src="../img/loopiny/loopiny-logo-top.webp"></a>
 
                 <div class="d-flex gap-3">
-                    <a href="#" class="my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrér &#9662;</a>
-                    <a href="#" class="my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarSort" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</a>
+                    <span class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrér &#9662;</span>
+                    <span class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarSort" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</span>
                 </div>
             </div>
 
@@ -74,32 +74,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Luk"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <form>
+                    <form id="sortForm">
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="new" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="sort" id="new" value="new" autocomplete="off" checked>
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="new">Nyeste</label>
                         </div>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="distance" autocomplete="off">
-                            <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="distance">Afstand</label>
+                            <input type="radio" class="btn-check" name="sort" id="dist" value="dist" autocomplete="off">
+                            <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="dist">Afstand</label>
                         </div>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="low" autocomplete="off">
+                            <input type="radio" class="btn-check" name="sort" id="low" value="low" autocomplete="off">
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="low">Laveste pris</label>
                         </div>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="high" autocomplete="off">
+                            <input type="radio" class="btn-check" name="sort" id="high" value="high" autocomplete="off">
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="high">Højeste pris</label>
                         </div>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="a-z" autocomplete="off">
+                            <input type="radio" class="btn-check" name="sort" id="a-z" value="a-z" autocomplete="off">
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="a-z">Alfabetisk A-Z</label>
                         </div>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="z-a" autocomplete="off">
+                            <input type="radio" class="btn-check" name="sort" id="z-a" value="z-a" autocomplete="off">
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="z-a">Alfabetisk Z-A</label>
                         </div>
-                        <button type="submit" class="btn btn-primary fw-semibold rounded-3 w-100 mt-2">Gem</button>
+                        <button id="saveBtn" class="btn btn-primary fw-semibold rounded-3 w-100 mt-2">Gem</button>
                     </form>
                 </div>
             </div>
@@ -125,5 +125,19 @@
         checkboxes.forEach(checkbox => { // For hver checkbox der er, skal den ændre det til afmarkeret
             checkbox.checked = false;
         });
+    });
+</script>
+
+<script>
+    // Sætter sortering til med knap
+    document.querySelector('#saveBtn').addEventListener('click', (event) => {
+        event.preventDefault(); // Forhindre standard form submit
+
+        const form = document.querySelector('#sortForm');
+        const selectedSort = form.querySelector('input[name="sort"]:checked').value;
+        const url = new URL(window.location);
+
+        url.searchParams.set('sort', selectedSort);
+        window.location.href = url;
     });
 </script>

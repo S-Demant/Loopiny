@@ -2,6 +2,20 @@
 require "../classes/classDB.php";
 require "../settings/init.php";
 ?>
+
+<?php
+/* Følgende kode er for at tjekke url for produkt eller butik */
+$url = 'http://' . $_SERVER['REQUEST_URI'];
+$pageType = '';
+if (str_contains($url, 'type=shops') == true) {
+    $pageType = 'shops';
+} else if (str_contains($url, 'type=products') == true) {
+    $pageType = 'products';
+} else {
+    $pageType = 'products';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -35,11 +49,11 @@ require "../settings/init.php";
             </div>
             <form>
                 <div class="d-flex text-center mt-2 mb-3">
-                    <input type="radio" class="btn-check btn-pick" name="pick" id="products" autocomplete="off" checked>
+                    <input type="radio" class="btn-check btn-pick" name="pick" id="products" autocomplete="off" <?php if ($pageType == 'products') echo 'checked'; ?>>
                     <label class="btn btn-primary border-2 border-light rounded-start-4 py-2 px-4 w-100" for="products">Produkter</label>
 
-                    <input type="radio" class="btn-check btn-pick" name="pick" id="stores" autocomplete="off">
-                    <label class="btn btn-primary border-2 border-light rounded-end-4 py-2 px-4 w-100" for="stores">Butikker</label>
+                    <input type="radio" class="btn-check btn-pick" name="pick" id="shops" autocomplete="off" <?php if ($pageType == 'shops') echo 'checked'; ?>>
+                    <label class="btn btn-primary border-2 border-light rounded-end-4 py-2 px-4 w-100" for="shops">Butikker</label>
                 </div>
             </form>
         </div>
@@ -49,77 +63,60 @@ require "../settings/init.php";
         <div class="container">
             <div class="row g-3">
                 <?php
-                $products = $db->sql("SELECT *, GROUP_CONCAT(categoryName SEPARATOR ', ') AS categoryName FROM products INNER JOIN connect_products_categories ON productId = productIdConnect INNER JOIN categories ON categoryId = categoryIdConnect ORDER BY productId ASC ");
+                if ($pageType == 'products') {
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN shops ON shopId = productShopId GROUP BY productId ORDER BY productId ASC ");
                 foreach($products as $product) {
                     ?>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100">
-                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
-                        <div class="p-2 my-2">
-                            <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
-                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
-                            <span class="text-secondary fw-semibold"><?php echo $product->categoryName ?></span>
-                            <div class="d-flex justify-content-center">
-                                <div class="position-absolute bottom-0 p-2 pb-3 w-100">
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
-                                        <span class="text-dark fw-semibold opacity-50">-81%</span>
-                                    </div>
-                                    <hr class="opacity-25">
-                                    <span>InterSport Kalundborg</span>
-                                </div>
+                    <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light shadow w-100">
+                        <div class="border border-2 border-light">
+                            <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                            <div class="p-2 mx-1 mt-1">
+                                <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
+                                <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
                             </div>
+                        </div>
+                        <div class="p-2 mx-1 mb-2">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
+                                <span class="text-dark fw-semibold opacity-50">
+                                    <?php
+                                    $savedPercentage = (($product->productRetailPrice - $product->productPrice) / $product->productRetailPrice) * 100; //Her udregnes besparrelsen i procent
+                                    $savedPercentageResult = number_format($savedPercentage); echo "-" . $savedPercentageResult . "%"; //Her omregnes resultatet til et helt tal
+                                    ?>
+                                </span>
+                            </div>
+                            <hr class="opacity-25 my-2">
+                            <span><?php echo $product->shopName ?></span>
                         </div>
                     </div>
                 </div>
                     <?php
-                }
+                }}
                 ?>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
-                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
-                        <div class="p-2 my-2">
-                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
-                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
-                            <div class="d-flex justify-content-between">
-                                <span class="text-secondary fw-semibold">70 DKK</span>
-                                <span class="text-dark fw-semibold opacity-50">-81%</span>
+
+                <?php
+                if ($pageType == 'shops') {
+                    $shops = $db->sql("SELECT * FROM shops GROUP BY shopId ORDER BY shopId ASC ");
+                    foreach($shops as $shop) {
+                        ?>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light shadow w-100">
+                                <div class="border border-2 border-light">
+                                    <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                                    <div class="p-2 mx-1 mt-1">
+                                        <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
+                                    </div>
+                                </div>
+                                <div class="p-2 mx-1 mb-2">
+                                    <hr class="opacity-25 my-2">
+                                    <span>Ikon her</span>
+                                </div>
                             </div>
-                            <hr class="opacity-25">
-                            <span class="">InterSport Kalundborg</span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
-                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
-                        <div class="p-2 my-2">
-                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
-                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
-                            <div class="d-flex justify-content-between">
-                                <span class="text-secondary fw-semibold">70 DKK</span>
-                                <span class="text-dark fw-semibold opacity-50">-81%</span>
-                            </div>
-                            <hr class="opacity-25">
-                            <span class="">InterSport Kalundborg</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="loop-card position-relative bg-light border border-2 border-light shadow w-100 h-auto">
-                        <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
-                        <div class="p-2 my-2">
-                            <a href="#" class="stretched-link" title="Produkt navn">Hummel - Navy langærmet sweatshirt i str. M</a>
-                            <p class="opacity-50 pt-2">Beskadiget indpakning, fejlproduktion, andet</p>
-                            <div class="d-flex justify-content-between">
-                                <span class="text-secondary fw-semibold">70 DKK</span>
-                                <span class="text-dark fw-semibold opacity-50">-81%</span>
-                            </div>
-                            <hr class="opacity-25">
-                            <span class="">InterSport Kalundborg</span>
-                        </div>
-                    </div>
-                </div>
+                        <?php
+                    }}
+                ?>
             </div>
         </div>
     </section>
@@ -129,6 +126,18 @@ require "../settings/init.php";
 <?php include("footer.php"); ?>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.querySelector('#products').addEventListener('click', () => pickBetweenButtons('products'));
+    document.querySelector('#shops').addEventListener('click', () => pickBetweenButtons('shops'));
+
+    // Funktion for at ændre mellem produkter og butikker
+    function pickBetweenButtons(id) {
+        const url = new URL(window.location);
+        url.searchParams.set('type', id);
+        window.location.href = url;
+    }
+</script>
 
 </body>
 </html>
