@@ -65,7 +65,7 @@ if (str_contains($url, 'type=shops') == true) {
                             foreach($categories as $category) {
                             ?>
                             <div class="form-check py-1 mt-1">
-                                <input class="form-check-input" type="checkbox" value="" id="check<?php echo $category->categoryName ?>" checked>
+                                <input class="form-check-input" type="checkbox" name="cat" value="<?php echo $category->categoryShort ?>" id="check<?php echo $category->categoryName ?>" checked>
                                 <label class="form-check-label" for="check<?php echo $category->categoryName ?>"><?php echo $category->categoryName ?></label>
                             </div>
                                 <?php
@@ -76,7 +76,7 @@ if (str_contains($url, 'type=shops') == true) {
                                 <button type="button" class="btn btn-primary fw-semibold rounded-3 w-100" id="uncheckAll">Afmarkér alle</button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary fw-semibold rounded-3 w-100 mt-1">Gem</button>
+                        <button id="saveCategoryBtn" type="submit" class="btn btn-primary fw-semibold rounded-3 w-100 mt-1">Gem</button>
                     </form>
                 </div>
             </div>
@@ -107,13 +107,7 @@ if (str_contains($url, 'type=shops') == true) {
                             $orderString = 'productId DESC';
                         }
                     } else if ($pageType == 'shops') {
-                        if (str_contains($url, 'order=new') == true) {
-                            $orderString = 'shopId DESC';
-                        } else if (str_contains($url, 'order=dist') == true) {
-                            $orderString = 'shopId DESC';
-                        } else if (str_contains($url, 'order=low') == true) {
-                            $orderString = 'shopId DESC';
-                        } else if (str_contains($url, 'order=high') == true) {
+                        if (str_contains($url, 'order=dist') == true) {
                             $orderString = 'shopId DESC';
                         } else if (str_contains($url, 'order=a-z') == true) {
                             $orderString = 'shopName ASC';
@@ -194,6 +188,25 @@ if (str_contains($url, 'type=shops') == true) {
         checkboxes.forEach(checkbox => { // For hver checkbox der er, skal den ændre det til afmarkeret
             checkbox.checked = false;
         });
+    });
+</script>
+
+<script>
+    document.querySelector('#saveCategoryBtn').addEventListener('click', (event) => {
+        event.preventDefault(); // Forhindre standard form submit
+
+        const form = document.querySelector('#categoryForm');
+        const checkedCategories = form.querySelectorAll('input[name="cat"]:checked');
+        let selectedValues = [];
+
+        checkedCategories.forEach((checkbox) => {
+            selectedValues.push(checkbox.value.toLowerCase());
+        });
+
+    // Sammenføj værdierne med et semikolon og tilføj til URL uden at kode dem
+        const queryString = selectedValues.join('-');
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?cat=' + queryString;
+        window.location.href = newUrl;
     });
 </script>
 
