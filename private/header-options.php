@@ -1,3 +1,16 @@
+<?php
+/* Følgende kode er for at tjekke url for produkt eller butik */
+$url = 'http://' . $_SERVER['REQUEST_URI'];
+$pageType = '';
+if (str_contains($url, 'type=shops') == true) {
+    $pageType = 'shops';
+} else if (str_contains($url, 'type=products') == true) {
+    $pageType = 'products';
+} else {
+    $pageType = 'products';
+}
+?>
+
 <header>
     <nav class="topnav align-content-center bg-light shadow fixed-top">
         <div class="container">
@@ -7,7 +20,7 @@
 
                 <div class="d-flex gap-3">
                     <span class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrér &#9662;</span>
-                    <span class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarSort" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</span>
+                    <span class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarOrder" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</span>
                 </div>
             </div>
 
@@ -68,35 +81,91 @@
                 </div>
             </div>
 
-            <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="navbarSort" aria-labelledby="Sorter listen">
+            <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="navbarOrder" aria-labelledby="Sortér listen">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fw-semibold" id="navbarSortLabel">Sortér</h5>
+                    <h5 class="offcanvas-title fw-semibold" id="navbarOrderLabel">Sortér</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Luk"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <form id="sortForm">
+
+                    <?php
+                    // Sortering af cards for både produkter og butikker
+                    if ($pageType == 'products' || $pageType == '') {
+                        if (str_contains($url, 'order=new') == true) {
+                            $orderString = 'productId DESC';
+                        } else if (str_contains($url, 'order=dist') == true) {
+                            $orderString = 'productId ASC';
+                        } else if (str_contains($url, 'order=low') == true) {
+                            $orderString = 'productPrice ASC';
+                        } else if (str_contains($url, 'order=high') == true) {
+                            $orderString = 'productPrice DESC';
+                        } else if (str_contains($url, 'order=a-z') == true) {
+                            $orderString = 'productTitle ASC';
+                        } else if (str_contains($url, 'order=z-a') == true) {
+                            $orderString = 'productTitle DESC';
+                        } else {
+                            $orderString = 'productId DESC';
+                        }
+                    } else if ($pageType == 'shops') {
+                        if (str_contains($url, 'order=new') == true) {
+                            $orderString = 'shopId DESC';
+                        } else if (str_contains($url, 'order=dist') == true) {
+                            $orderString = 'shopId DESC';
+                        } else if (str_contains($url, 'order=low') == true) {
+                            $orderString = 'shopId DESC';
+                        } else if (str_contains($url, 'order=high') == true) {
+                            $orderString = 'shopId DESC';
+                        } else if (str_contains($url, 'order=a-z') == true) {
+                            $orderString = 'shopName ASC';
+                        } else if (str_contains($url, 'order=z-a') == true) {
+                            $orderString = 'shopName DESC';
+                        } else {
+                            $orderString = 'shopId DESC';
+                        }
+                    }
+                    ?>
+
+                    <?php
+                    // Gør at det rigtige sortering bliver markeret på knapperne
+                    // isset($_GET['order']) er funktioner der tjekker og forsøger at hente værdien af order parameteret. Hvor ? tjekker om det er true eller false, og gør det sidste hvis det er false
+                    $order = isset($_GET['order']) ? $_GET['order'] : '';
+                    ?>
+
+                    <form id="orderForm">
+                        <?php
+                        if ($pageType != 'shops') {
+                        ?>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="new" value="new" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="order" id="new" value="new" autocomplete="off" <?php echo ($order == 'new' || $order == '') ? 'checked' : ''; ?>>
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="new">Nyeste</label>
                         </div>
+                            <?php
+                        }
+                        ?>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="dist" value="dist" autocomplete="off">
+                            <input type="radio" class="btn-check" name="order" id="dist" value="dist" autocomplete="off" <?php echo ($order == 'dist') ? 'checked' : ''; ?>>
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="dist">Afstand</label>
                         </div>
+                        <?php
+                        if ($pageType != 'shops') {
+                        ?>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="low" value="low" autocomplete="off">
+                            <input type="radio" class="btn-check" name="order" id="low" value="low" autocomplete="off" <?php echo ($order == 'low') ? 'checked' : ''; ?>>
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="low">Laveste pris</label>
                         </div>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="high" value="high" autocomplete="off">
+                            <input type="radio" class="btn-check" name="order" id="high" value="high" autocomplete="off" <?php echo ($order == 'high') ? 'checked' : ''; ?>>
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="high">Højeste pris</label>
                         </div>
+                            <?php
+                        }
+                        ?>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="a-z" value="a-z" autocomplete="off">
+                            <input type="radio" class="btn-check" name="order" id="a-z" value="a-z" autocomplete="off" <?php echo ($order == 'a-z') ? 'checked' : ''; ?>>
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="a-z">Alfabetisk A-Z</label>
                         </div>
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="sort" id="z-a" value="z-a" autocomplete="off">
+                            <input type="radio" class="btn-check" name="order" id="z-a" value="z-a" autocomplete="off" <?php echo ($order == 'z-a') ? 'checked' : ''; ?>>
                             <label class="btn btn-outline-secondary border-2 rounded-3 w-100" for="z-a">Alfabetisk Z-A</label>
                         </div>
                         <button id="saveBtn" class="btn btn-primary fw-semibold rounded-3 w-100 mt-2">Gem</button>
@@ -133,11 +202,11 @@
     document.querySelector('#saveBtn').addEventListener('click', (event) => {
         event.preventDefault(); // Forhindre standard form submit
 
-        const form = document.querySelector('#sortForm');
-        const selectedSort = form.querySelector('input[name="sort"]:checked').value;
+        const form = document.querySelector('#orderForm');
+        const selectedOrder = form.querySelector('input[name="order"]:checked').value;
         const url = new URL(window.location);
 
-        url.searchParams.set('sort', selectedSort);
+        url.searchParams.set('order', selectedOrder);
         window.location.href = url;
     });
 </script>

@@ -3,19 +3,6 @@ require "../classes/classDB.php";
 require "../settings/init.php";
 ?>
 
-<?php
-/* Følgende kode er for at tjekke url for produkt eller butik */
-$url = 'http://' . $_SERVER['REQUEST_URI'];
-$pageType = '';
-if (str_contains($url, 'type=shops') == true) {
-    $pageType = 'shops';
-} else if (str_contains($url, 'type=products') == true) {
-    $pageType = 'products';
-} else {
-    $pageType = 'products';
-}
-?>
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -64,7 +51,7 @@ if (str_contains($url, 'type=shops') == true) {
             <div class="row g-3">
                 <?php
                 if ($pageType == 'products') {
-                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN shops ON shopId = productShopId GROUP BY productId ORDER BY productId ASC ");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN shops ON shopId = productShopId GROUP BY productId ORDER BY $orderString");
                 foreach($products as $product) {
                     ?>
                 <div class="col-6 col-md-4 col-lg-3">
@@ -97,7 +84,7 @@ if (str_contains($url, 'type=shops') == true) {
 
                 <?php
                 if ($pageType == 'shops') {
-                    $shops = $db->sql("SELECT * FROM shops GROUP BY shopId ORDER BY shopId ASC ");
+                    $shops = $db->sql("SELECT * FROM shops GROUP BY shopId ORDER BY $orderString");
                     foreach($shops as $shop) {
                         ?>
                         <div class="col-6 col-md-4 col-lg-3">
@@ -128,10 +115,10 @@ if (str_contains($url, 'type=shops') == true) {
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+    // Funktion for at ændre mellem produkter og butikker
     document.querySelector('#products').addEventListener('click', () => pickBetweenButtons('products'));
     document.querySelector('#shops').addEventListener('click', () => pickBetweenButtons('shops'));
 
-    // Funktion for at ændre mellem produkter og butikker
     function pickBetweenButtons(id) {
         const url = new URL(window.location);
         url.searchParams.set('type', id);
