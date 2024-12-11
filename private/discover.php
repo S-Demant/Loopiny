@@ -51,13 +51,13 @@ require "../settings/init.php";
             <div class="row g-3">
                 <?php
                 if ($pageType == 'products') {
-                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE categoryShort IN ($filterString) GROUP BY productId ORDER BY $orderString");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE categoryShort IN ($filterString) AND shopName = 'Din tøjmand Kalundborg' GROUP BY productId ORDER BY $orderString");
                 foreach($products as $product) {
                     ?>
                 <div class="col-6 col-md-4 col-lg-3">
                     <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light shadow w-100">
                         <div class="border border-2 border-light">
-                            <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                            <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
                             <div class="p-2 mx-1 mt-1">
                                 <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
                                 <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
@@ -74,7 +74,6 @@ require "../settings/init.php";
                                 </span>
                             </div>
                             <hr class="opacity-25 my-2">
-                            <span><?php echo $product->categoryName ?></span>
                             <span><?php echo $product->shopName ?></span>
                         </div>
                     </div>
@@ -91,9 +90,9 @@ require "../settings/init.php";
                         <div class="col-6 col-md-4 col-lg-3">
                             <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light shadow w-100">
                                 <div class="border border-2 border-light">
-                                    <img src="../img/uploads/product/product-demo.webp" alt="Produkt navn" class="img-fluid w-100">
+                                    <img src="<?php echo $shop->shopImage ?>" alt="<?php echo $shop->shopName ?>" class="img-fluid w-100">
                                     <div class="p-2 mx-1 mt-1">
-                                        <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
+                                        <a href="#" class="card-for-shops text-dark stretched-link" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
                                     </div>
                                 </div>
                                 <div class="p-2 mx-1 mb-2">
@@ -125,6 +124,25 @@ require "../settings/init.php";
         url.searchParams.set('type', id);
         window.location.href = url;
     }
+</script>
+
+<script>
+    // Ny
+    // Vælg alle elementer med klassen 'card-for-shops'
+    const shopCards = document.querySelectorAll('.card-for-shops');
+
+    // Tilføj en click-event listener til hvert element
+    shopCards.forEach(shopCard => {
+        shopCard.addEventListener('click', () => {
+            // Hent værdien fra det klikkede element
+            const shopValue = shopCard.getAttribute('data-value');
+            // Kald pickBetweenButtons med værdien
+            goToShop(shopValue);
+            console.log(shopValue);
+        });
+    });
+
+
 </script>
 
 </body>

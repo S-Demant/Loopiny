@@ -54,71 +54,73 @@ if (str_contains($url, 'type=shops') == true) {
                     </form>
 
                     <?php
-                    // Filtrering efter kategorier
-                    if (str_contains($url, 'cat=') == true) {
-                        if (str_contains($url, 'acc') == true) {
-                            $categories[] = 'acc';
+                    if ($pageType != 'shops') {
+                        // Filtrering efter kategorier
+                        if (str_contains($url, 'cat=') == true) {
+                            if (str_contains($url, 'acc') == true) {
+                                $categories[] = 'acc';
+                            }
+
+                            if (str_contains($url, 'elec') == true) {
+                                $categories[] = 'elec';
+                            }
+
+                            if (str_contains($url, 'appl') == true) {
+                                $categories[] = 'appl';
+                            }
+
+                            if (str_contains($url, 'houseapp') == true) {
+                                $categories[] = 'houseapp';
+                            }
+
+                            if (str_contains($url, 'toys') == true) {
+                                $categories[] = 'toys';
+                            }
+
+                            if (str_contains($url, 'furnint') == true) {
+                                $categories[] = 'furnint';
+                            }
+
+                            if (str_contains($url, 'sho') == true) {
+                                $categories[] = 'sho';
+                            }
+
+                            if (str_contains($url, 'garden') == true) {
+                                $categories[] = 'garden';
+                            }
+
+                            if (str_contains($url, 'cloth') == true) {
+                                $categories[] = 'cloth';
+                            }
+
+                            if (str_contains($url, 'ent') == true) {
+                                $categories[] = 'ent';
+                            }
+
+                            if (str_contains($url, 'other') == true) {
+                                $categories[] = 'other';
+                            }
                         }
 
-                        if (str_contains($url, 'elec') == true) {
-                            $categories[] = 'elec';
+                        // Her tjekkes der for ord i URL'en. Hvis ingen af ordene findes i URL'en, skal den vise alle kategorier
+                        $wordsToCheck = ['acc', 'elec', 'appl', 'houseapp', 'toys', 'furnint', 'sho', 'garden', 'cloth', 'ent', 'other'];
+                        $allWordsMissing = true;
+
+                        foreach ($wordsToCheck as $word) {
+                            if (str_contains($url, $word)) {
+                                $allWordsMissing = false;
+                                break; // Hvis et af ordene findes, tjekkes ikke resten
+                            }
                         }
 
-                        if (str_contains($url, 'appl') == true) {
-                            $categories[] = 'appl';
+                        // Aktiveres hvis ingen af ordene findes i URL'en
+                        if ($allWordsMissing) {
+                            $categories = ['acc', 'elec', 'appl', 'houseapp', 'toys', 'furnint', 'sho', 'garden', 'cloth', 'ent', 'other'];
                         }
 
-                        if (str_contains($url, 'houseapp') == true) {
-                            $categories[] = 'houseapp';
-                        }
-
-                        if (str_contains($url, 'toys') == true) {
-                            $categories[] = 'toys';
-                        }
-
-                        if (str_contains($url, 'furnint') == true) {
-                            $categories[] = 'furnint';
-                        }
-
-                        if (str_contains($url, 'sho') == true) {
-                            $categories[] = 'sho';
-                        }
-
-                        if (str_contains($url, 'garden') == true) {
-                            $categories[] = 'garden';
-                        }
-
-                        if (str_contains($url, 'cloth') == true) {
-                            $categories[] = 'cloth';
-                        }
-
-                        if (str_contains($url, 'ent') == true) {
-                            $categories[] = 'ent';
-                        }
-
-                        if (str_contains($url, 'other') == true) {
-                            $categories[] = 'other';
-                        }
+                        // Konverter array til en liste med komma som mellemrum igennem Implode, så den kan læses i sql.
+                        $filterString = "'" . implode("','", $categories) . "'";
                     }
-
-                    // Her tjekkes der for ord i URL'en. Hvis ingen af ordene findes i URL'en, skal den vise alle kategorier
-                    $wordsToCheck = ['acc', 'elec', 'appl', 'houseapp', 'toys', 'furnint', 'sho', 'garden', 'cloth', 'ent', 'other'];
-                    $allWordsMissing = true;
-
-                    foreach ($wordsToCheck as $word) {
-                        if (str_contains($url, $word)) {
-                            $allWordsMissing = false;
-                            break; // Hvis et af ordene findes, tjekkes ikke resten
-                        }
-                    }
-
-                    // Aktiveres hvis ingen af ordene findes i URL'en
-                    if ($allWordsMissing) {
-                        $categories = ['acc', 'elec', 'appl', 'houseapp', 'toys', 'furnint', 'sho', 'garden', 'cloth', 'ent', 'other'];
-                    }
-
-                    // Konverter array til en liste med komma som mellemrum igennem Implode, så den kan læses i sql.
-                    $filterString = "'" . implode("','", $categories) . "'";
                     ?>
 
                     <?php
