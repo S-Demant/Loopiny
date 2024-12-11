@@ -19,8 +19,8 @@ if (str_contains($url, 'type=shops') == true) {
                 <a href="discover.php" class="my-auto"><img src="../img/loopiny/loopiny-logo-top.webp"></a>
 
                 <div class="d-flex gap-3">
-                    <span class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrér &#9662;</span>
-                    <span class="fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarOrder" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</span>
+                    <span class="btn fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarFilter" aria-controls="Viser navigationen for filtrering" aria-label="Filtrer listen">Filtrér &#9662;</span>
+                    <span class="btn fw-semibold my-auto px-2" data-bs-toggle="offcanvas" data-bs-target="#navbarOrder" aria-controls="Viser navigationen for sortering" aria-label="Sorter listen">Sortér &#9662;</span>
                 </div>
             </div>
 
@@ -52,10 +52,6 @@ if (str_contains($url, 'type=shops') == true) {
                         </div>
                         <button type="submit" class="btn btn-primary fw-semibold rounded-3 w-100 mt-2">Gem</button>
                     </form>
-
-                    <div class="my-4">
-                        <hr>
-                    </div>
 
                     <?php
                     // Filtrering efter kategorier
@@ -125,6 +121,13 @@ if (str_contains($url, 'type=shops') == true) {
                     $filterString = "'" . implode("','", $categories) . "'";
                     ?>
 
+                    <?php
+                    if ($pageType != 'shops') {
+                    ?>
+                        <div class="my-4">
+                            <hr>
+                        </div>
+
                     <form id="categoryForm">
                         <div class="mb-3">
                             <span class="fw-semibold">Kategorier</span>
@@ -146,6 +149,9 @@ if (str_contains($url, 'type=shops') == true) {
                         </div>
                         <button id="saveCategoryBtn" type="submit" class="btn btn-primary fw-semibold rounded-3 w-100 mt-1">Gem</button>
                     </form>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
 
