@@ -246,6 +246,9 @@ if (str_contains($url, 'type=shops') == true) {
     </nav>
 </header>
 
+<?php
+if ($pageType != 'shops') {
+?>
 <script>
     // Tager de markerede felter i filter, og sætter i URL
     document.querySelector('#saveCategoryBtn').addEventListener('click', (event) => {
@@ -303,6 +306,9 @@ if (str_contains($url, 'type=shops') == true) {
         });
     });
 </script>
+    <?php
+}
+?>
 
 <script>
     // Sætter sortering til med knap

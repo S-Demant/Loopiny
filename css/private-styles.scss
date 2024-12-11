@@ -123,4 +123,22 @@ a, .btn {
     img {
       border-top-left-radius: 20px;
     }
+
+  .favorite-icon {
+    position: relative;
+    height: 20px;
+    border-radius: 0;
+    z-index: 9;
+
+    @include breakpoint($small) {
+      height: 25px;
+    }
+  }
+}
+
+.minimize-text {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

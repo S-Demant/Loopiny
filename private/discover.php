@@ -51,7 +51,7 @@ require "../settings/init.php";
             <div class="row g-3">
                 <?php
                 if ($pageType == 'products') {
-                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE categoryShort IN ($filterString) AND shopName = 'Din tøjmand Kalundborg' GROUP BY productId ORDER BY $orderString");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE categoryShort IN ($filterString) GROUP BY productId ORDER BY $orderString");
                 foreach($products as $product) {
                     ?>
                 <div class="col-6 col-md-4 col-lg-3">
@@ -74,7 +74,7 @@ require "../settings/init.php";
                                 </span>
                             </div>
                             <hr class="opacity-25 my-2">
-                            <span><?php echo $product->shopName ?></span>
+                            <span class="minimize-text"><?php echo $product->shopName ?></span>
                         </div>
                     </div>
                 </div>
@@ -84,20 +84,23 @@ require "../settings/init.php";
 
                 <?php
                 if ($pageType == 'shops') {
-                    $shops = $db->sql("SELECT * FROM shops GROUP BY shopId ORDER BY $orderString");
+                    $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productShopId = shopId) as productCount FROM shops GROUP BY shopId ORDER BY $orderString");
                     foreach($shops as $shop) {
                         ?>
                         <div class="col-6 col-md-4 col-lg-3">
-                            <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light shadow w-100">
+                            <div class="loop-card card-for-shops d-flex flex-column justify-content-between position-relative bg-light shadow w-100" data-value="<?php echo $shop->shopId ?>">
                                 <div class="border border-2 border-light">
                                     <img src="<?php echo $shop->shopImage ?>" alt="<?php echo $shop->shopName ?>" class="img-fluid w-100">
                                     <div class="p-2 mx-1 mt-1">
-                                        <a href="#" class="card-for-shops text-dark stretched-link" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
+                                        <a href="#" class="text-dark stretched-link minimize-text" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
+                                        <p class="opacity-50 pt-2"><?php echo $shop->shopAdress ?><br><?php echo $shop->shopAdressCode ?></p>
                                     </div>
                                 </div>
-                                <div class="p-2 mx-1 mb-2">
+                                <div class="p-2 mx-1 mb-1">
+                                    <span class="">Produkter til salg: <?php echo $shop->productCount ?></span>
                                     <hr class="opacity-25 my-2">
-                                    <span>Ikon her</span>
+                                    <img class="favorite-icon opacity-50" data-id="<?php echo $shop->shopId ?>" src="../img/icons/favorite.svg">
+                                    <img class="favorite-icon opacity-50" data-id="<?php echo $shop->shopId ?>" src="../img/icons/favorite-on.svg" style="display:none;">
                                 </div>
                             </div>
                         </div>
@@ -109,6 +112,7 @@ require "../settings/init.php";
     </section>
 
 </article>
+
 
 <?php include("footer.php"); ?>
 
@@ -127,23 +131,28 @@ require "../settings/init.php";
 </script>
 
 <script>
-    // Ny
-    // Vælg alle elementer med klassen 'card-for-shops'
-    const shopCards = document.querySelectorAll('.card-for-shops');
-
-    // Tilføj en click-event listener til hvert element
-    shopCards.forEach(shopCard => {
-        shopCard.addEventListener('click', () => {
-            // Hent værdien fra det klikkede element
-            const shopValue = shopCard.getAttribute('data-value');
-            // Kald pickBetweenButtons med værdien
-            goToShop(shopValue);
-            console.log(shopValue);
+    // Funktion for at tildele favorit til butikker
+    document.querySelectorAll(".favorite-icon").forEach(function(elem) {
+        elem.addEventListener("click", function() {
+            var id = this.getAttribute("data-id");
+            changeFavorite(id);
         });
     });
 
-
+    function changeFavorite(id) {
+        var favorite = document.querySelectorAll('.favorite-icon[data-id="'+id+'"]')[0];
+        var favoriteOn = document.querySelectorAll('.favorite-icon[data-id="'+id+'"]')[1];
+        if (favorite.style.display === "none") {
+            favorite.style.display = "block";
+            favoriteOn.style.display = "none";
+        } else {
+            favorite.style.display = "none";
+            favoriteOn.style.display = "block";
+        }
+    }
 </script>
+
+
 
 </body>
 </html>
