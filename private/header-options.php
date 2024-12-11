@@ -171,7 +171,44 @@ if (str_contains($url, 'type=shops') == true) {
 </header>
 
 <script>
-    // Markér og afmarkér alle felter i filtrering
+    // Tager de markerede felter i filter, og sætter i URL
+    document.querySelector('#saveCategoryBtn').addEventListener('click', (event) => {
+        event.preventDefault(); // Forhindre standard form submit
+
+        const form = document.querySelector('#categoryForm');
+        const checkedCategories = form.querySelectorAll('input[name="cat"]:checked');
+        let selectedCategories = [];
+
+        checkedCategories.forEach((checkbox) => {
+            selectedCategories.push(checkbox.value);
+        });
+
+        // Sammensæt kategorierne i url'en med et punktum
+        const queryString = selectedCategories.join('.');
+
+        // Hent den eksisterende URL
+        const url = new URLSearchParams(window.location.search);
+        url.set('cat', queryString);
+
+        // Opret ny url sammen med eksisterende url. Henter hele linjen fra http til hjemmesiden sti, og tilføjer parametra
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + url.toString();
+        window.location.href = newUrl;
+    });
+
+    // Sørger for hver kategori der er i url, er markeret korrekt i filtreringen
+    const url = new URLSearchParams(window.location.search);
+    const categories = url.get('cat') ? url.get('cat').split('.') : []; // Finder cat i URL og deler dem op mellem pinktum. Hvis ikke der er nogen værdier, er der et tomt array.
+    const checkboxes = document.querySelectorAll('input[name="cat"]');
+
+    checkboxes.forEach(checkbox => {
+        if (categories.includes(checkbox.value)) {
+            checkbox.checked = true;
+        } else {
+            checkbox.checked = false; // Sørger for at afmarkere dem, der ikke er i URL
+        }
+    });
+
+    // Markér og afmarkér alle felter i filtrering med de to knapper
     const checkAllBtn = document.querySelector('#checkAll');
     const uncheckAllBtn = document.querySelector('#uncheckAll');
     const categoryForm = document.querySelector('#categoryForm');
@@ -188,25 +225,6 @@ if (str_contains($url, 'type=shops') == true) {
         checkboxes.forEach(checkbox => { // For hver checkbox der er, skal den ændre det til afmarkeret
             checkbox.checked = false;
         });
-    });
-</script>
-
-<script>
-    document.querySelector('#saveCategoryBtn').addEventListener('click', (event) => {
-        event.preventDefault(); // Forhindre standard form submit
-
-        const form = document.querySelector('#categoryForm');
-        const checkedCategories = form.querySelectorAll('input[name="cat"]:checked');
-        let selectedValues = [];
-
-        checkedCategories.forEach((checkbox) => {
-            selectedValues.push(checkbox.value.toLowerCase());
-        });
-
-    // Sammenføj værdierne med et semikolon og tilføj til URL uden at kode dem
-        const queryString = selectedValues.join('-');
-        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?cat=' + queryString;
-        window.location.href = newUrl;
     });
 </script>
 
