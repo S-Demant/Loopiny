@@ -54,9 +54,9 @@ require "../settings/init.php";
                 $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE categoryShort IN ($filterString) GROUP BY productId ORDER BY $orderString");
                 foreach($products as $product) {
                     ?>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light shadow w-100">
-                        <div class="border border-2 border-light">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100">
+                        <div class="">
                             <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
                             <div class="p-2 mx-1 mt-1">
                                 <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
@@ -87,12 +87,12 @@ require "../settings/init.php";
                     $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productShopId = shopId) as productCount FROM shops GROUP BY shopId ORDER BY $orderString");
                     foreach($shops as $shop) {
                         ?>
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <div class="loop-card card-for-shops d-flex flex-column justify-content-between position-relative bg-light shadow w-100" data-value="<?php echo $shop->shopId ?>">
-                                <div class="border border-2 border-light">
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                            <div class="loop-card card-for-shops d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100" data-value="<?php echo $shop->shopId ?>">
+                                <div class="">
                                     <img src="<?php echo $shop->shopImage ?>" alt="<?php echo $shop->shopName ?>" class="img-fluid w-100">
                                     <div class="p-2 mx-1 mt-1">
-                                        <a href="#" class="text-dark  minimize-text" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
+                                        <a href="shop.php?shopId=<?php echo $shop->shopId ?>" class="text-dark stretched-link minimize-text" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
                                         <p class="opacity-50 pt-2"><?php echo $shop->shopAdress ?><br><?php echo $shop->shopAdressCode ?></p>
                                     </div>
                                 </div>
@@ -117,6 +117,7 @@ require "../settings/init.php";
 <?php include("footer.php"); ?>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/favorite.js"></script>
 
 <script>
     // Funktion for at ændre mellem produkter og butikker
@@ -128,58 +129,6 @@ require "../settings/init.php";
         url.searchParams.set('type', id);
         window.location.href = url;
     }
-</script>
-
-<script>
-    // Funktion hvor man ændrer mellem favorit og ikke favorit butik
-    document.addEventListener('DOMContentLoaded', function() {
-        const favoriteIcons = document.querySelectorAll('.favorite-icon');
-        favoriteIcons.forEach(icon => {
-            icon.addEventListener('click', function() {
-                const shopId = this.getAttribute('data-id');
-                changeFavorite(shopId);
-            });
-        });
-
-        function changeFavorite(shopId) {
-            const favorite = document.querySelector(`.favorite-icon[data-id="${shopId}"][src$="favorite.svg"]`);
-            const favoriteOn = document.querySelector(`.favorite-icon[data-id="${shopId}"][src$="favorite-on.svg"]`);
-
-            if (favorite.style.display === "none") {
-                favorite.style.display = "block";
-                favoriteOn.style.display = "none";
-            } else {
-                favorite.style.display = "none";
-                favoriteOn.style.display = "block";
-            }
-
-            fetch('http://localhost/loopiny/private/update-favorite.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'shopId=' + shopId
-            })
-                .then(response => response.text())
-                .then(data => {
-                    if (data !== 'success') {
-                        // Hvis der opstår en fejl, skift ikonernes visning tilbage
-                        if (favorite.style.display === "none") {
-                            favorite.style.display = "block";
-                            favoriteOn.style.display = "none";
-                        } else {
-                            favorite.style.display = "none";
-                            favoriteOn.style.display = "block";
-                        }
-                        alert('Fejlede med at opdatere favorit: ' + data);
-                    }
-                })
-                .catch(error => {
-                    console.error('Fejl:', error);
-                    alert('En ukendt fejl opstod. Prøv igen senere.');
-                });
-        }
-    });
 </script>
 
 

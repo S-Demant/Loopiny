@@ -2,7 +2,7 @@
 /* Følgende kode er for at tjekke url for produkt eller butik */
 $url = 'http://' . $_SERVER['REQUEST_URI'];
 $pageType = '';
-if (str_contains($url, 'type=shops') == true) {
+if (str_contains($url, 'type=shops') || str_contains($url, 'favorites')) {
     $pageType = 'shops';
 } else if (str_contains($url, 'type=products') == true) {
     $pageType = 'products';
