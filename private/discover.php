@@ -92,8 +92,11 @@ require "../settings/init.php";
                                 <div class="border border-2 border-light">
                                     <img src="<?php echo $shop->shopImage ?>" alt="<?php echo $shop->shopName ?>" class="img-fluid w-100">
                                     <div class="p-2 mx-1 mt-1">
-                                        <a href="#" class="text-dark stretched-link minimize-text" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
+                                        <a href="#" class="text-dark  minimize-text" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
                                         <p class="opacity-50 pt-2"><?php echo $shop->shopAdress ?><br><?php echo $shop->shopAdressCode ?></p>
+
+                                        <button class="btn btn-primary favorite-btn" data-shop-id="<?php echo $shop->shopId ?>">Favorit</button>
+
                                     </div>
                                 </div>
                                 <div class="p-2 mx-1 mb-1">
@@ -152,6 +155,36 @@ require "../settings/init.php";
     }
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const favoriteButtons = document.querySelectorAll('.favorite-btn');
+        favoriteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const shopId = this.getAttribute('data-shop-id');
+                fetch('http://localhost/loopiny/private/update-favorite.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'shopId=' + shopId
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        if (data === 'success') {
+                            alert('Shop favorite status updated');
+                        } else {
+                            alert('Failed to update favorite status: ' + data);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while processing the request.');
+                    });
+            });
+        });
+    });
+
+</script>
 
 
 </body>
