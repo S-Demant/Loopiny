@@ -94,16 +94,13 @@ require "../settings/init.php";
                                     <div class="p-2 mx-1 mt-1">
                                         <a href="#" class="text-dark  minimize-text" title="Vis produkter fra <?php echo $shop->shopName ?>"><?php echo $shop->shopName ?></a>
                                         <p class="opacity-50 pt-2"><?php echo $shop->shopAdress ?><br><?php echo $shop->shopAdressCode ?></p>
-
-                                        <button class="btn btn-primary favorite-btn" data-shop-id="<?php echo $shop->shopId ?>">Favorit</button>
-
                                     </div>
                                 </div>
                                 <div class="p-2 mx-1 mb-1">
                                     <span class="">Produkter til salg: <?php echo $shop->productCount ?></span>
                                     <hr class="opacity-25 my-2">
-                                    <img class="favorite-icon opacity-50" data-id="<?php echo $shop->shopId ?>" src="../img/icons/favorite.svg">
-                                    <img class="favorite-icon opacity-50" data-id="<?php echo $shop->shopId ?>" src="../img/icons/favorite-on.svg" style="display:none;">
+                                    <img class="favorite-icon btn p-0" data-id="<?php echo $shop->shopId ?>" src="../img/icons/favorite.svg" style="display: <?php echo $shop->shopFavorite == 1 ? 'none' : 'block'; ?>;">
+                                    <img class="favorite-icon btn p-0" data-id="<?php echo $shop->shopId ?>" src="../img/icons/favorite-on.svg" style="display: <?php echo $shop->shopFavorite == 1 ? 'block' : 'none'; ?>;">
                                 </div>
                             </div>
                         </div>
@@ -134,56 +131,55 @@ require "../settings/init.php";
 </script>
 
 <script>
-    // Funktion for at tildele favorit til butikker
-    document.querySelectorAll(".favorite-icon").forEach(function(elem) {
-        elem.addEventListener("click", function() {
-            var id = this.getAttribute("data-id");
-            changeFavorite(id);
-        });
-    });
-
-    function changeFavorite(id) {
-        var favorite = document.querySelectorAll('.favorite-icon[data-id="'+id+'"]')[0];
-        var favoriteOn = document.querySelectorAll('.favorite-icon[data-id="'+id+'"]')[1];
-        if (favorite.style.display === "none") {
-            favorite.style.display = "block";
-            favoriteOn.style.display = "none";
-        } else {
-            favorite.style.display = "none";
-            favoriteOn.style.display = "block";
-        }
-    }
-</script>
-
-<script>
+    // Funktion hvor man ændrer mellem favorit og ikke favorit butik
     document.addEventListener('DOMContentLoaded', function() {
-        const favoriteButtons = document.querySelectorAll('.favorite-btn');
-        favoriteButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const shopId = this.getAttribute('data-shop-id');
-                fetch('http://localhost/loopiny/private/update-favorite.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: 'shopId=' + shopId
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        if (data === 'success') {
-                            alert('Shop favorite status updated');
-                        } else {
-                            alert('Failed to update favorite status: ' + data);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('An error occurred while processing the request.');
-                    });
+        const favoriteIcons = document.querySelectorAll('.favorite-icon');
+        favoriteIcons.forEach(icon => {
+            icon.addEventListener('click', function() {
+                const shopId = this.getAttribute('data-id');
+                changeFavorite(shopId);
             });
         });
-    });
 
+        function changeFavorite(shopId) {
+            const favorite = document.querySelector(`.favorite-icon[data-id="${shopId}"][src$="favorite.svg"]`);
+            const favoriteOn = document.querySelector(`.favorite-icon[data-id="${shopId}"][src$="favorite-on.svg"]`);
+
+            if (favorite.style.display === "none") {
+                favorite.style.display = "block";
+                favoriteOn.style.display = "none";
+            } else {
+                favorite.style.display = "none";
+                favoriteOn.style.display = "block";
+            }
+
+            fetch('http://localhost/loopiny/private/update-favorite.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'shopId=' + shopId
+            })
+                .then(response => response.text())
+                .then(data => {
+                    if (data !== 'success') {
+                        // Hvis der opstår en fejl, skift ikonernes visning tilbage
+                        if (favorite.style.display === "none") {
+                            favorite.style.display = "block";
+                            favoriteOn.style.display = "none";
+                        } else {
+                            favorite.style.display = "none";
+                            favoriteOn.style.display = "block";
+                        }
+                        alert('Fejlede med at opdatere favorit: ' + data);
+                    }
+                })
+                .catch(error => {
+                    console.error('Fejl:', error);
+                    alert('En ukendt fejl opstod. Prøv igen senere.');
+                });
+        }
+    });
 </script>
 
 
