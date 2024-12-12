@@ -31,7 +31,13 @@ require "../settings/init.php";
     <section>
         <div class="container">
             <div class="text-center">
-                <h2 class="text-primary fw-semibold mb-0">Produkter der er klar til at blive reddet nær dig</h2>
+                <h2 class="text-primary fw-semibold mb-1">
+                    <?php if ($pageType == 'products') {
+                        echo 'Produkter der er klar til at blive reddet nær dig';
+                    } else if ($pageType == 'shops') {
+                        echo 'Butikker nær dig som er en del af Loopiny';
+                    } ?>
+                </h2>
                 <span>Inden for 8 km. fra 4400 Kalundborg</span>
             </div>
             <form>
