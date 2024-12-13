@@ -137,6 +137,43 @@ a, .btn {
   }
 }
 
+// Swipe
+.swipe-button {
+  width: 250px;
+  height: 60px;
+  background-color: #ffffff;
+  color: #007bff;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #007bff;
+}
+
+.swipe-text {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: left 0.3s ease;
+}
+
+.swipe-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.3s ease;
+}
+
 // Blandet
 .minimize-text {
   display: block;

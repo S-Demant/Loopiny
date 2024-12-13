@@ -11,7 +11,7 @@ $product = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle ORDER BY conditionId 
 $product = $product[0];
 $conditions = explode(', ', $product->conditionTitle);
 $productReserved = $product->productReserved;
-
+$productPickedUp = $product->productPickedUp;
 ?>
 
 <!DOCTYPE html>
@@ -119,18 +119,31 @@ $productReserved = $product->productReserved;
         <div class="container">
             <div class="col-12 col-md-10 col-lg-6">
 
-                <form id="reserveForm" method="POST" style="<?php echo ($productReserved == '1') ? 'display:none;' : ''; ?>">
-                    <input type="hidden" name="productId" value="<?php echo $productId; ?>">
-                    <button type="button" id="reserveBtn" class="btn btn-primary fw-semibold rounded-4 w-100 py-3 mt-3">Reservér produktet nu</button>
-                </form>
-                <div class="text-center" id="reserveControle" style="display:<?php echo ($productReserved == '1') ? 'block' : 'none'; ?>;">
-                    <p>Du har reserveret dette produktet</p>
+                <?php if ($productPickedUp == '1'): ?>
+                    <p class="fw-semibold text-center mt-3">Dette produkt er afhentet, og ikke længere tilgængeligt.</p>
+                <?php else: ?>
+                <div id="reserveBtn" style="<?php echo ($productReserved == '1') ? 'display:none;' : ''; ?>">
+                    <form id="reserveForm" method="POST">
+                        <input type="hidden" name="productId" value="<?php echo $productId; ?>">
+                        <button type="button" class="btn btn-primary fw-semibold rounded-4 w-100 py-3 mt-3">Reservér produktet nu</button>
+                    </form>
+                    <p class="text-center my-2">Produktet skal afhentes inden for 48 timer fra reservation, inden for butikkens åbningstid, ellers annulleres din reservation</p>
+                    <div class="d-flex justify-content-center">
+                        <button id="backBtn" class="btn btn-outline-dark fw-semibold rounded-4 py-1 px-5 mt-2">Tilbage</button>
+                    </div>
                 </div>
 
-                <p class="text-center my-2">Produktet skal afhentes inden for 48 timer fra reservation, inden for butikkens åbningstid, ellers annulleres din reservation</p>
-                <div class="d-flex justify-content-center">
-                    <button id="backBtn" class="btn btn-outline-dark fw-semibold rounded-4 py-1 px-5 mt-2">Tilbage</button>
+                <div class="text-center mt-3" id="reserveControle" style="display:<?php echo ($productReserved == '1') ? 'block' : 'none'; ?>;">
+                    <p class="fw-semibold mb-0"><?php echo $product->productTitle ?> er reserveret af dig.</p>
+                    <p>Swipe når du afhenter det reserverede produkt i butikken.<br>Reservationen annulleres om 8 timer og 31 minutter.</p>
+                    <h2 class="fw-semibold text-secondary">Swipe her når du afhenter dit produkt!</h2>
+                    <div id="swipeBtn" class="swipe-button">
+                        <span id="swipeCircle" class="swipe-circle"></span>
+                        <span class="swipe-text">Swipe fra venstre til højre</span>
+                    </div>
+                    <?php endif; ?>
                 </div>
+
             </div>
         </div>
     </section>
@@ -149,6 +162,7 @@ $productReserved = $product->productReserved;
 </script>
 
 <script>
+    // Reservation funktion
     const reserveBtn = document.querySelector("#reserveBtn");
 
     reserveBtn.addEventListener('click', function() {
@@ -172,8 +186,62 @@ $productReserved = $product->productReserved;
     });
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var swipeBtn = document.getElementById('swipeBtn');
+        var swipeCircle = document.getElementById('swipeCircle');
+        var startX;
 
+        if (swipeBtn) { // Tjek om swipeBtn findes, før tilføjelse af event listeners
+            swipeBtn.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+            });
+
+            swipeBtn.addEventListener('touchmove', function(e) {
+                var touch = e.touches[0];
+                var change = touch.clientX - startX;
+                if (change > 0 && change < swipeBtn.offsetWidth - swipeCircle.offsetWidth - 10) {
+                    swipeCircle.style.left = change + 'px';
+                }
+            });
+
+            swipeBtn.addEventListener('touchend', function(e) {
+                var touch = e.changedTouches[0];
+                var change = touch.clientX - startX;
+                if (change > swipeBtn.offsetWidth / 2) { // Tjek om swipen var lang nok
+                    swipeCircle.style.left = (swipeBtn.offsetWidth - swipeCircle.offsetWidth - 10) + 'px';
+                    alert('Swipe registreret!');
+                    setTimeout(function() {
+                        swipeCircle.style.left = '5px'; // Reset position
+                    }, 1000);
+
+                    // Send POST-anmodning for at opdatere productPickedUp
+                    var productId = <?php echo $productId; ?>; // Hent productId fra PHP
+                    fetch('product-picked-up.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId: productId })
+                    })
+                        .then(response => response.text())
+                        .then(data => {
+                            console.log('Update response:', data);
+                            if (data.trim() === "Success") {
+                                location.reload(); // Genindlæs siden
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Fejl ved opdatering:', error);
+                        });
+                } else {
+                    swipeCircle.style.left = '5px'; // Reset position
+                }
+            });
+        }
+    });
+
+</script>
 
 </body>
 </html>
-
