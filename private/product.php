@@ -10,6 +10,7 @@ $productId = $_GET["productId"];
 $product = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle ORDER BY conditionId ASC SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionIdConnect = conditionId INNER JOIN shops ON shopId = productShopId WHERE productId = :productId GROUP BY productId", [":productId" => $productId]);
 $product = $product[0];
 $conditions = explode(', ', $product->conditionTitle);
+$productReserved = $product->productReserved;
 
 ?>
 
@@ -117,7 +118,15 @@ $conditions = explode(', ', $product->conditionTitle);
     <section>
         <div class="container">
             <div class="col-12 col-md-10 col-lg-6">
-                <button id="reserveBtn" class="btn btn-primary fw-semibold rounded-4 w-100 py-3 mt-3">Reservér produktet nu</button>
+
+                <form id="reserveForm" method="POST" style="<?php echo ($productReserved == '1') ? 'display:none;' : ''; ?>">
+                    <input type="hidden" name="productId" value="<?php echo $productId; ?>">
+                    <button type="button" id="reserveBtn" class="btn btn-primary fw-semibold rounded-4 w-100 py-3 mt-3">Reservér produktet nu</button>
+                </form>
+                <div class="text-center" id="reserveControle" style="display:<?php echo ($productReserved == '1') ? 'block' : 'none'; ?>;">
+                    <p>Du har reserveret dette produktet</p>
+                </div>
+
                 <p class="text-center my-2">Produktet skal afhentes inden for 48 timer fra reservation, inden for butikkens åbningstid, ellers annulleres din reservation</p>
                 <div class="d-flex justify-content-center">
                     <button id="backBtn" class="btn btn-outline-dark fw-semibold rounded-4 py-1 px-5 mt-2">Tilbage</button>
@@ -139,10 +148,32 @@ $conditions = explode(', ', $product->conditionTitle);
     });
 </script>
 
+<script>
+    const reserveBtn = document.querySelector("#reserveBtn");
+
+    reserveBtn.addEventListener('click', function() {
+        const form = document.querySelector('#reserveForm');
+        const formData = new FormData(form);
+
+        fetch('reserve-product.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data.trim() === "Success") {
+                    document.querySelector('#reserveBtn').style.display = 'none';
+                    document.querySelector('#reserveControle').style.display = 'block';
+                    alert('Du har reserveret dette produktet.');
+                } else {
+                    alert('Der opstod en fejl. Prøv venligst igen senere.');
+                }
+            })
+    });
+</script>
+
+
+
 </body>
 </html>
-
-
-
-
 
