@@ -81,7 +81,7 @@ $shop = $shop[0];
                             <div class="">
                                 <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
                                 <div class="p-2 mx-1 mt-1">
-                                    <a href="#" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
+                                    <a href="product.php?productId=<?php echo $product->productId ?>" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
                                     <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
                                 </div>
                             </div>
