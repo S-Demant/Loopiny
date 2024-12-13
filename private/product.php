@@ -117,33 +117,36 @@ $productPickedUp = $product->productPickedUp;
     </section>
     <section>
         <div class="container">
-            <div class="col-12 col-md-10 col-lg-6">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-6">
+                    <?php if ($productPickedUp == '1'): ?>
+                        <p class="fw-semibold text-center mt-3">Dette produkt er afhentet, og ikke længere tilgængeligt.</p>
+                    <?php else: ?>
+                    <div id="reserveBtn" style="<?php echo ($productReserved == '1') ? 'display:none;' : ''; ?>">
+                        <form id="reserveForm" method="POST">
+                            <input type="hidden" name="productId" value="<?php echo $productId; ?>">
+                            <button type="button" class="btn btn-primary fw-semibold rounded-4 w-100 py-3 mt-3">Reservér produktet nu</button>
+                        </form>
+                        <p class="text-center my-2">Produktet skal afhentes inden for 48 timer fra reservation, inden for butikkens åbningstid, ellers annulleres din reservation</p>
+                        <div class="d-flex justify-content-center">
+                            <button id="backBtn" class="btn btn-outline-dark fw-semibold rounded-4 py-1 px-5 mt-2">Tilbage</button>
+                        </div>
+                    </div>
 
-                <?php if ($productPickedUp == '1'): ?>
-                    <p class="fw-semibold text-center mt-3">Dette produkt er afhentet, og ikke længere tilgængeligt.</p>
-                <?php else: ?>
-                <div id="reserveBtn" style="<?php echo ($productReserved == '1') ? 'display:none;' : ''; ?>">
-                    <form id="reserveForm" method="POST">
-                        <input type="hidden" name="productId" value="<?php echo $productId; ?>">
-                        <button type="button" class="btn btn-primary fw-semibold rounded-4 w-100 py-3 mt-3">Reservér produktet nu</button>
-                    </form>
-                    <p class="text-center my-2">Produktet skal afhentes inden for 48 timer fra reservation, inden for butikkens åbningstid, ellers annulleres din reservation</p>
-                    <div class="d-flex justify-content-center">
-                        <button id="backBtn" class="btn btn-outline-dark fw-semibold rounded-4 py-1 px-5 mt-2">Tilbage</button>
+                    <div class="text-center mt-3" id="reserveControle" style="display:<?php echo ($productReserved == '1') ? 'block' : 'none'; ?>;">
+                        <h2 class="fw-semibold text-secondary mb-3">Swipe her når du afhenter dit produkt!</h2>
+                        <div class="d-flex justify-content-center">
+                            <div id="swipeBtn" class="swipe-button position-relative bg-light text-primary border border-2 border-primary rounded-5 overflow-hidden">
+                                <span id="swipeCircle" class="swipe-circle position-absolute bg-primary rounded-circle translate-middle-y top-50"></span>
+                                <h2 class="position-absolute translate-middle top-50 start-50 fw-semibold mb-0">Afhent nu!</h2>
+                            </div>
+                        </div>
+
+                        <p class="fw-semibold mt-3 mb-0"><?php echo $product->productTitle ?> er reserveret af dig.</p>
+                        <p>Swipe når du afhenter det reserverede produkt i butikken.<br>Reservationen annulleres om 8 timer og 31 minutter.</p>
+                        <?php endif; ?>
                     </div>
                 </div>
-
-                <div class="text-center mt-3" id="reserveControle" style="display:<?php echo ($productReserved == '1') ? 'block' : 'none'; ?>;">
-                    <p class="fw-semibold mb-0"><?php echo $product->productTitle ?> er reserveret af dig.</p>
-                    <p>Swipe når du afhenter det reserverede produkt i butikken.<br>Reservationen annulleres om 8 timer og 31 minutter.</p>
-                    <h2 class="fw-semibold text-secondary">Swipe her når du afhenter dit produkt!</h2>
-                    <div id="swipeBtn" class="swipe-button">
-                        <span id="swipeCircle" class="swipe-circle"></span>
-                        <span class="swipe-text">Swipe fra venstre til højre</span>
-                    </div>
-                    <?php endif; ?>
-                </div>
-
             </div>
         </div>
     </section>
@@ -152,7 +155,6 @@ $productPickedUp = $product->productPickedUp;
 <?php include("footer.php"); ?>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/favorite.js"></script>
 <script>
     // Går tilbage til forrige side
     const backBtn = document.querySelector("#backBtn");
@@ -187,36 +189,38 @@ $productPickedUp = $product->productPickedUp;
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var swipeBtn = document.getElementById('swipeBtn');
-        var swipeCircle = document.getElementById('swipeCircle');
-        var startX;
+    function letsSwipe() {
+        let swipeBtn = document.getElementById('swipeBtn');
+        let swipeCircle = document.getElementById('swipeCircle');
+        let startX;
+        let isMouseDown = false;
 
         if (swipeBtn) { // Tjek om swipeBtn findes, før tilføjelse af event listeners
+            // Touch events
             swipeBtn.addEventListener('touchstart', function(e) {
                 startX = e.touches[0].clientX;
             });
 
             swipeBtn.addEventListener('touchmove', function(e) {
-                var touch = e.touches[0];
-                var change = touch.clientX - startX;
+                let touch = e.touches[0];
+                let change = touch.clientX - startX;
                 if (change > 0 && change < swipeBtn.offsetWidth - swipeCircle.offsetWidth - 10) {
                     swipeCircle.style.left = change + 'px';
                 }
             });
 
             swipeBtn.addEventListener('touchend', function(e) {
-                var touch = e.changedTouches[0];
-                var change = touch.clientX - startX;
-                if (change > swipeBtn.offsetWidth / 2) { // Tjek om swipen var lang nok
+                let touch = e.changedTouches[0];
+                let change = touch.clientX - startX;
+                if (change > swipeBtn.offsetWidth / 1.5) { // Tjek om swipen var lang nok
                     swipeCircle.style.left = (swipeBtn.offsetWidth - swipeCircle.offsetWidth - 10) + 'px';
-                    alert('Swipe registreret!');
+                    alert('Tillykke! Du har nu reddet dette produkt fra destruktion. Tryk OK for at fortsætte.');
                     setTimeout(function() {
-                        swipeCircle.style.left = '5px'; // Reset position
+                        swipeCircle.style.left = '0.15rem'; // Reset position
                     }, 1000);
 
                     // Send POST-anmodning for at opdatere productPickedUp
-                    var productId = <?php echo $productId; ?>; // Hent productId fra PHP
+                    let productId = <?php echo $productId; ?>; // Hent productId fra PHP
                     fetch('product-picked-up.php', {
                         method: 'POST',
                         headers: {
@@ -228,19 +232,69 @@ $productPickedUp = $product->productPickedUp;
                         .then(data => {
                             console.log('Update response:', data);
                             if (data.trim() === "Success") {
-                                location.reload(); // Genindlæs siden
+                                window.location.href = '../private/product-success.php?productId=<?php echo $productId; ?>'; // Omdiriger til den nye side
                             }
                         })
                         .catch(error => {
                             console.error('Fejl ved opdatering:', error);
                         });
                 } else {
-                    swipeCircle.style.left = '5px'; // Reset position
+                    swipeCircle.style.left = '0.15rem'; // Reset position
+                }
+            });
+
+            // Mouse events
+            swipeBtn.addEventListener('mousedown', function(e) {
+                startX = e.clientX;
+                isMouseDown = true;
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isMouseDown) return;
+                let change = e.clientX - startX;
+                if (change > 0 && change < swipeBtn.offsetWidth - swipeCircle.offsetWidth - 10) {
+                    swipeCircle.style.left = change + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', function(e) {
+                if (!isMouseDown) return;
+                isMouseDown = false;
+                let change = e.clientX - startX;
+                if (change > swipeBtn.offsetWidth / 1.5) { // Tjek om swipen var lang nok
+                    swipeCircle.style.left = (swipeBtn.offsetWidth - swipeCircle.offsetWidth - 10) + 'px';
+                    alert('Tillykke! Du har nu reddet dette produkt fra destruktion. Tryk OK for at fortsætte.');
+                    setTimeout(function() {
+                        swipeCircle.style.left = '0.15rem'; // Reset position
+                    }, 1000);
+
+                    // Send POST-anmodning for at opdatere productPickedUp
+                    let productId = <?php echo $productId; ?>;
+                    fetch('product-picked-up.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId: productId })
+                    })
+                        .then(response => response.text())
+                        .then(data => {
+                            console.log('Update response:', data);
+                            if (data.trim() === "Success") {
+                                window.location.href = '../private/product-success.php?productId=<?php echo $productId; ?>'; // Omdiriger til den nye side
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Fejl ved opdatering:', error);
+                        });
+                } else {
+                    swipeCircle.style.left = '0.15rem'; // Reset position
                 }
             });
         }
-    });
+    }
 
+    letsSwipe();
 </script>
 
 </body>
