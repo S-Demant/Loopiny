@@ -295,7 +295,7 @@ $productPickedUp = $product->productPickedUp;
     }
 
     letsSwipe();
-</script>g
+</script>
 
 </body>
 </html>
