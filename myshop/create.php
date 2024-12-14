@@ -30,97 +30,97 @@ require "../settings/init.php";
 <article>
     <section>
         <div class="container">
-            <h2 class="fw-semibold mb-3">Brugerflade</h2>
-            <form>
+            <div class="text-center">
+                <h2 class="text-primary fw-semibold mb-1">Sæt dit produkt til salg med Loopiny</h2>
+                <span>Produktet skal indeholde en fyldestgørende titel, et billede af produktet, samt en årsag til hvorfor produktet er tilgængeligt i Loopiny tjenesten</span>
+            </div>
+            <form class="mt-4">
                 <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="language" class="form-label fw-semibold">Sprog</label>
-                            <select class="form-select" aria-label="language">
-                                <option>Vælg dit sprog</option>
-                                <option selected value="dk">Dansk</option>
-                                <option value="eng">Prototype</option>
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-4">
+                            <label for="title" class="form-label fw-semibold">Produktets titel *</label>
+                            <input type="text" class="form-control" id="title" aria-describedby="Produktets titel" placeholder="F.eks. Orange langærmet sweatshirt i str. large">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-4">
+                            <label for="category" class="form-label fw-semibold">Produktets kategori *</label>
+                            <select class="form-select" aria-label="category" required>
+                                <option selected>Vælg en kategori</option>
+                                <option value="...">...</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="mode" class="form-label fw-semibold">Tilstand</label>
-                            <select class="form-select" aria-label="mode">
-                                <option selected value="light">Light mode</option>
-                                <option value="dark">Prototype</option>
-                            </select>
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-4">
+                            <label for="price" class="form-label fw-semibold">Produktets Loopiny pris *</label>
+                            <input type="text" class="form-control" id="price" aria-describedby="Produktets pris" placeholder="Skriv prisen for produktet" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="mb-4">
+                            <label for="retailPrice" class="form-label fw-semibold">Produktets vejledende udsalgspris *</label>
+                            <input type="text" class="form-control" id="retailPrice" aria-describedby="Produktets pris" placeholder="Skriv produktets oprindelige pris" required>
+                        </div>
+                    </div>
+                    <span class="fw-semibold">Produktets tilstand *</span>
+                    <div class="col-6 col-lg-4 mb-3">
+                        <?php
+                        $conditions = $db->sql("SELECT * FROM conditions WHERE conditionId % 2 = 0 ORDER BY conditionId ASC");
+                        foreach($conditions as $condition) {
+                            ?>
+                            <div class="form-check py-1 mt-1">
+                                <input class="form-check-input" type="checkbox" name="cat" value="<?php echo $condition->conditionId ?>" id="check<?php echo $condition->conditionId ?>">
+                                <label class="form-check-label" for="check<?php echo $condition->conditionId ?>"><?php echo $condition->conditionTitle ?></label>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="col-6 col-lg-4 mb-4">
+                        <?php
+                        $conditions = $db->sql("SELECT * FROM conditions WHERE conditionId % 2 = 1 ORDER BY conditionId ASC");
+                        foreach($conditions as $condition) {
+                            ?>
+                            <div class="form-check py-1 mt-1">
+                                <input class="form-check-input" type="checkbox" name="cat" value="<?php echo $condition->conditionId ?>" id="check<?php echo $condition->conditionId ?>">
+                                <label class="form-check-label" for="check<?php echo $condition->conditionId ?>"><?php echo $condition->conditionTitle ?></label>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="col-12 col-lg-4"></div>
+                    <div class="col-12 col-lg-4">
+                        <div class="mb-4 pb-2">
+                            <label for="uploadImage" class="form-label fw-semibold">Billede af produktet *</label>
+                            <p class="mb-2">Vi accepterer billeder af filtypen png, jpeg og webp.</p>
+                            <input type="file" class="form-control-file" id="uploadImage" accept="image/png, image/jpeg, image/webp" required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="mb-4 pb-2">
+                            <label for="uploadImage2" class="form-label fw-semibold">Billede af fejlen / manglen</label>
+                            <p class="mb-2">Vi accepterer billeder af filtypen png, jpeg og webp.</p>
+                            <input type="file" class="form-control-file" id="uploadImage2" accept="image/png, image/jpeg, image/webp" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <label for="description" class="form-label fw-semibold">Yderligere beskrivelse af produktet</label>
+                            <textarea class="form-control" id="description" rows="3" maxlength="300" aria-describedby="Beskrivelse af produktet" placeholder="F.eks. Står som ny, men med en enkelt syning der er gået op ved toppen af venstre arm."></textarea>
+                        <span>Maks 300 tegn.</span>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="location" class="form-label fw-semibold">Lokation</label>
-                            <select class="form-select" aria-label="location">
-                                <option>Vælg din lokation</option>
-                                <option selected value="4200">4200 Slagelse</option>
-                                <option value="pro">Prototype</option>
-                            </select>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="accept">
+                            <label class="form-check-label" for="accept">Ved oprettelse af produktet accepterer du vilkår og betingelser fra Loopiny om gældende håndtering, handel og ansvar. Læs vores handelspolitik her</label>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="distance" class="form-label fw-semibold">Afstand</label>
-                            <select class="form-select" aria-label="distance">
-                                <option selected>Vælg maks afstand fra lokation</option>
-                                <option value="0">Nær din lokation</option>
-                                <option value="3">Inden for 3 km.</option>
-                                <option value="5">Inden for 5 km.</option>
-                                <option value="pro">Prototype</option>
-                            </select>
-                        </div>
+                        <button type="createBtn" class="btn btn-primary fw-semibold rounded-3 px-5 py-2 mt-2">Opret produkt</button>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary fw-semibold rounded-3 px-5 py-2 mt-2">Gem indstillinger</button>
             </form>
-
-            <h2 class="fw-semibold mt-5 mb-3">Login oplysninger</h2>
-            <form>
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Navn</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="Dit navn" placeholder="Dit navn" value="Jens Jensen">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="mail" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="mail" aria-describedby="Din e-mail" placeholder="Din e-mail" value="jensen@prototype.dk">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="gender" class="form-label fw-semibold">Køn</label>
-                            <select class="form-select" aria-describedby="Vælg dit køn" aria-label="gender">
-                                <option selected>Intet køn valgt</option>
-                                <option value="k">Kvinde</option>
-                                <option value="m">Mand</option>
-                                <option value="a">Andet</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Adgangskode</label>
-                            <input type="password" class="form-control" id="password" aria-describedby="Din adgangskode" placeholder="Din adgangskode" value="dotdotdot">
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary fw-semibold rounded-3 px-5 py-2 mt-2">Gem indstillinger</button>
-            </form>
-
-            <h2 class="fw-semibold mt-5 mb-3">Support</h2>
-            <span>E-mail: mail@loopiny.com</span>
-            <br>
-            <span>Tlf.: 30 26 46 82</span>
-
-            <h2 class="fw-semibold mt-5 mb-3">Slet</h2>
-            <button id="delete" class="btn btn-outline-dark fw-semibold rounded-3 py-2 px-5 mt-2">Slet profil permanent</button>
         </div>
     </section>
 </article>
