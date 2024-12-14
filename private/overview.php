@@ -122,18 +122,5 @@ require "../settings/init.php";
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/favorite.js"></script>
 
-<script>
-    // Funktion for at ændre mellem produkter og butikker
-    document.querySelector('#products').addEventListener('click', () => pickBetweenButtons('products'));
-    document.querySelector('#shops').addEventListener('click', () => pickBetweenButtons('shops'));
-
-    function pickBetweenButtons(id) {
-        const url = new URL(window.location);
-        url.searchParams.set('type', id);
-        window.location.href = url;
-    }
-</script>
-
-
 </body>
 </html>

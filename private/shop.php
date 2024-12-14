@@ -73,7 +73,7 @@ $shop = $shop[0];
             </div>
             <div class="row g-3">
                 <?php
-                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE shopId = $shopId GROUP BY productId ORDER BY productId DESC ");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE shopId = $shopId AND productReserved = 0 GROUP BY productId ORDER BY productId DESC ");
                 foreach($products as $product) {
                     ?>
                     <div class="col-6 col-md-4 col-lg-3 col-xl-2">
