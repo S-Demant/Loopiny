@@ -48,7 +48,6 @@ $xxtraLarge: 1400px;
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
   background-color: $light;
   color: $dark;
   font-family: "Glory", sans-serif;
@@ -89,13 +88,14 @@ footer {
     }
   }
 
-  .margin-to-top {
-    padding-top: 130px;
+  .nav-fill {
+    height: 100px;
   }
 }
 
 article {
   padding-top: 4.7rem;
+  padding-bottom: 1.7rem;
 }
 
 a, .btn {
@@ -159,7 +159,6 @@ a, .btn {
 .texture {
   margin: 0;
   padding: 0;
-  height: 100%;
   background-image: url("../img/hero-texture.webp");
 }
 

@@ -57,7 +57,7 @@ require "../settings/init.php";
             <div class="row g-3">
                 <?php
                 if ($pageType == 'products') {
-                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE categoryShort IN ($filterString) GROUP BY productId ORDER BY $orderString");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE productReserved = 0 AND categoryShort IN ($filterString) GROUP BY productId ORDER BY $orderString");
                 foreach($products as $product) {
                     ?>
                 <div class="col-6 col-md-4 col-lg-3 col-xl-2">
