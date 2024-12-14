@@ -31,7 +31,7 @@ if($product->productPickedUp != '1') {
     <meta name="author" content="Udgiver">
     <meta name="copyright" content="Information om copyright">
 
-    <link href="../css/private-styles.css" rel="stylesheet" type="text/css">
+    <link href="../css/webapp-styles.css" rel="stylesheet" type="text/css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
