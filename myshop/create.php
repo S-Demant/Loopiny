@@ -106,10 +106,12 @@ require "../settings/init.php";
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="mb-4">
+                        <div class="mb-3">
                             <label for="description" class="form-label fw-semibold">Yderligere beskrivelse af produktet</label>
-                            <textarea class="form-control" id="description" rows="3" maxlength="300" aria-describedby="Beskrivelse af produktet" placeholder="F.eks. Står som ny, men med en enkelt syning der er gået op ved toppen af venstre arm."></textarea>
-                        <span>Maks 300 tegn.</span>
+                            <textarea class="form-control mb-1" id="description" rows="3" maxlength="300" aria-describedby="Beskrivelse af produktet" placeholder="F.eks. Står som ny, men med en enkelt syning der er gået op ved toppen af venstre arm."></textarea>
+                            <div class="text-end">
+                                <span class="text-end opacity-50">Maks 300 tegn.</span>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -128,7 +130,6 @@ require "../settings/init.php";
 <?php include("footer.php"); ?>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/favorite.js"></script>
 
 </body>
 </html>
