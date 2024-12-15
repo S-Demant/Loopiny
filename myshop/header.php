@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="d-flex justify-content-between">
-                <a href="discover.php" class="my-auto"><img src="../img/loopiny/loopiny-logo-top.webp"></a>
+                <a href="myproducts.php" class="my-auto"><img src="../img/loopiny/loopiny-logo-top.webp"></a>
             </div>
 
         </div>

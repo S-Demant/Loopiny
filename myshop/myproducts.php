@@ -38,9 +38,19 @@ require "../settings/init.php";
     </section>
     <section>
         <div class="container">
-            <div class="row g-3">
+            <div class="row g-3 mt-2">
                 <?php
                     $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE shopId = 1 AND productPickedUp = 0 GROUP BY productId ORDER BY productId DESC");
+
+                if (empty($products)) {
+                    // Hvis der ikke findes noget resultat
+                    echo '
+                    <div class="text-center">
+                    <p class="mb-2">Du har endnu ikke nogen produkter tilgængelig</p>
+                    <a href="create.php" title="Opret produkt" class="btn btn-secondary fw-semibold rounded-3 py-1 px-3">Opret produkt</a>
+                    </div>
+                    ';
+                } else {
                     foreach($products as $product) {
                         ?>
                         <div class="col-6 col-md-4 col-lg-3 col-xl-2">
@@ -49,7 +59,14 @@ require "../settings/init.php";
                                     <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
                                     <div class="p-2 mx-1 mt-1">
                                         <a href="product.php?productId=<?php echo $product->productId ?>" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
-                                        <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
+                                        <p class="opacity-50 pt-2 mb-0">Status</p>
+                                        <?php
+                                        if ($product->productReserved == 1) {
+                                            echo '<span class="fw-semibold text-secondary">Reserveret</span>';
+                                        } else {
+                                            echo '<span class="fw-semibold">Tilgængelig</span>';
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="p-2 mx-1 mb-2">
@@ -60,15 +77,27 @@ require "../settings/init.php";
                                     $savedPercentage = (($product->productRetailPrice - $product->productPrice) / $product->productRetailPrice) * 100; //Her udregnes besparrelsen i procent
                                     $savedPercentageResult = number_format($savedPercentage); echo "-" . $savedPercentageResult . "%"; //Her omregnes resultatet til et helt tal
                                     ?>
-                                </span>
+                                        </span>
                                     </div>
-                                    <hr class="opacity-25 my-2">
-                                    <span class="minimize-text"><?php echo $product->shopName ?></span>
+
+                                    <?php
+                                    if ($product->productReserved == 1) {
+                                        echo '
+                                        <button type="button" id="pickItUp" class="btn btn-primary position-relative fw-semibold rounded-4 z-9 w-100 py-1 mt-2" data-product-id="' . $product->productId . '">Angiv som afhentet</button>
+                                        ';
+                                    } else {
+                                        echo '
+                                        <button type="button" class="btn btn-primary fw-semibold position-relative rounded-4 opacity-25 z-9 w-100 py-1 mt-2">Angiv som afhentet</button>
+                                        ';
+                                    }
+                                    ?>
+
                                 </div>
                             </div>
                         </div>
                         <?php
                     }
+                }
                 ?>
             </div>
         </div>
@@ -79,6 +108,30 @@ require "../settings/init.php";
 <?php include("footer.php"); ?>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    //
+    document.querySelector("#pickItUp").addEventListener("click", function() {
+        const productId = this.getAttribute("data-product-id"); // Henter produktId'et fra data-attributten
+        if (confirm("Du er ved at angive dette produkt som afhentet. Er dette korrekt?")) {
+            fetch("set-to-pick-up.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `productPickedUp=1&productId=${productId}`
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // Viser beskeden fra set-to-pick-up.php
+                    location.reload(); // Opdaterer siden
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+    });
+</script>
 
 </body>
 </html>
