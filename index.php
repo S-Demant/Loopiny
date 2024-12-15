@@ -192,7 +192,7 @@ require "settings/init.php";
 </div>
 
 <!-- Sektion: Underoverskrifter og tekst -->
-<div class="content-section" style="background-color: #304229; color: white; padding-top: 200px;">
+<div class="content-section" style="background-color: #304229; color: #F5F5F0; padding-top: 200px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -211,7 +211,7 @@ require "settings/init.php";
                     Proin sit amet massa turpis. In vulputate, nulla id ultrices feugiat, est diam mattis dolor, nec pharetra turpis ligula nec arcu.
                 </p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" style="background-color: #46643c">
                 <h3>Underoverskrift</h3>
                 <p>
                     Cras tristique diam a ligula hendrerit tincidunt. Nam a fermentum justo. Nulla facilisi. Donec euismod a mauris at laoreet. Proin in felis faucibus, mattis dolor a, lacinia dui.
