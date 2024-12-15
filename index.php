@@ -253,13 +253,21 @@ require "settings/init.php";
             <div class="col-md-6">
                 <h2>Hvem er Loopiny?</h2>
                 <p>
-                    Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus. Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit.
+                    Loopiny er en innovativ platform og applikation, der skaber en bro mellem butikker og kunder med
+                    fokus på genanvendelse af varer med mindre fejl eller mangler. Vi tilbyder en løsning, hvor varer,
+                    der ellers ville blive sat på udsalgsstativer eller kasseret, kan finde nye ejere, der værdsætter
+                    deres funktionalitet og kvalitet.
+
                 </p>
                 <p>
-                    Nunc venenatis odio est, ac consectetur magna efficitur eu. Proin sit amet massa turpis. In vulputate, nulla id ultrices feugiat, est diam mattis dolor, nec pharetra turpis ligula nec arcu.
+                    Platformen gør det muligt for kunder at reservere varer direkte fra butikkerne og efterfølgende
+                    hente dem på en enkel og overskuelig måde. Varerne kan eksempelvis være fra anden sortering,
+                    returvarer eller produkter med kosmetiske skader, som fortsat er fuldt funktionelle.
                 </p>
                 <p>
-                    Aenean faucibus justo vel tellus posuere hendrerit. Sed sed auctor risus. Nulla hendrerit laoreet dui eu facilisis. Cras convallis pellentesque metus, ut rutrum velit condimentum ac.
+                    Loopiny stræber efter at fremme ansvarlig forbrugerkultur ved at minimere spild og maksimere
+                    værdien af eksisterende ressourcer. Vores mission er at skabe en smartere og mere ressourceeffektiv
+                    måde at handle på, hvor både forbrugere og detailhandlen drager fordel.
                 </p>
             </div>
         </div>
@@ -277,14 +285,29 @@ require "settings/init.php";
             <div class="col-md-2">
                 <div class="content-box"></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <h2>Identitet og certifikater</h2>
                 <p>
-                    Nunc ut nulla lobortis, ultricies tellus ut, tristique ligula. Vivamus sit amet nisi semper, ornare lacus at, accumsan est. In nulla ante. Aenean fermentum neque a nisl maximus, ut pretium diam iaculis.
+                    Hos Loopiny går vi forrest for at fremme en mere klimavenlig tilgang til forbrug. Vi arbejder
+                    aktivt for at reducere spild ved at give varer med små fejl eller mangler en ny chance og dermed
+                    sikre, at ressourcer udnyttes til deres fulde potentiale
                 </p>
                 <p>
-                    Quisque vestibulum urna turpis. Etiam eget nibh ante. Pellentesque feugiat id quam in dictum. Vestibulum augue sapien, vehicula mollis nisi eget, ullamcorper lobortis turpis.
+                    Vores samarbejde med butikker inkluderer høje krav til ansvarlighed, og vi samarbejder med
+                    partnere, der deler vores vision om en grønnere fremtid.
                 </p>
+
+                <p>
+                    Loopiny er en del af en større bevægelse mod en mere cirkulær økonomi, hvor varer, der ellers ville
+                    gå til spilde, finder nye ejere. Vores platform gør det nemt for dig at tage et klimavenligt valg i
+                    hverdagen – og samtidig finde unikke varer til gode priser.
+
+                </p>
+                    Ved at vælge Loopiny bidrager du aktivt til en grønnere fremtid og støtter butikker, der arbejder
+                    for at reducere deres klimaaftryk. Sammen kan vi gøre en forskel, én vare ad gangen.
+                <p>
+
+
             </div>
         </div>
     </div>
