@@ -13,27 +13,33 @@ require "settings/init.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: url('img/loopiny/hero-texture.webp') no-repeat center center fixed;
-            background-size: cover;
+            background: #F5F5F0;
             font-family: 'Glory', sans-serif;
             color: white;
         }
 
-        .navbar-brand img {
-            max-height: 50px;
-        }
+
 
         .hero-section {
-            padding: 4rem 1rem;
             text-align: center;
+            padding: 6rem 1rem; /* Ekstra højde */
         }
 
-        .hero-section .btn-outline-light {
-            border-width: 2px;
+        .hero-section .btn {
+            margin: 0.5rem;
+            border: 2px solid white;
+            color: white;
             padding: 0.5rem 2rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
         }
+
+        .hero-section p {
+            margin: 1rem auto;
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+
 
         .content-section {
             background-color: #f5f5f0;
@@ -62,14 +68,7 @@ require "settings/init.php";
             z-index: 1000;
         }
 
-        .small-box {
-            background-color: #242424;
-            color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            height: 150px;
-        }
+
 
         .section h2 {
             font-size: 1.8rem;
@@ -80,6 +79,22 @@ require "settings/init.php";
 
 
 
+        .navbar .nav-link,
+        .navbar .btn,
+        .navbar .dropdown-toggle {
+            color: white !important; /* Sørg for, at teksten stadig er hvid */
+            font-weight: 500; /* Gør teksten lidt tykkere for bedre synlighed */
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .btn:hover,
+        .navbar .dropdown-toggle:hover {
+            color: #dcdcdc !important; /* Lysere farve ved hover */
+        }
+
+
+
+
 
 
 
@@ -87,54 +102,56 @@ require "settings/init.php";
     </style>
 </head>
 <body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-        <!-- Venstre links -->
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link" href="#">Vores tjeneste</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Vores vision</a></li>
-        </ul>
-
-        <!-- Logo i midten -->
-        <a class="navbar-brand mx-auto" href="#">
-            <img src="img/loopiny/loopiny-logo-top.webp" alt="Loopiny Logo">
-        </a>
-
-        <!-- Højre links -->
-
+<div class="container-fluid" style="background-image: url('img/loopiny/hero-texture.webp'); background-color: #304229" >
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- Venstre links -->
             <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#">Vores tjeneste</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Vores vision</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Om Loopiny</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Blogindlæg</a></li>
             </ul>
-            <button class="btn btn-outline-light ms-2">Loopiny Privat</button>
-            <button class="btn btn-outline-light ms-2">Loopiny Erhverv</button>
-            <div class="dropdown ms-3">
-                <button class="btn btn-outline-light dropdown-toggle dropdown ms-3" type="button" id="languageDropdown" data-bs-toggle="dropdown">
-                    Dansk
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Dansk</a></li>
-                    <li><a class="dropdown-item" href="#">English</a></li>
-                </ul>
+
+            <!-- Logo i midten -->
+            <a class="navbar-brand position-absolute start-50 translate-middle-x" href="#">
+                <img src="img/loopiny/loopiny-logo-top.webp" alt="Loopiny Logo" style="height: 50px;">
+            </a>
+
+            <!-- Højre links -->
+            <div class="d-flex align-items-center">
+                <button class="btn btn-outline-light ms-2">Loopiny Privat</button>
+                <button class="btn btn-outline-light ms-2">Loopiny Erhverv</button>
+                <div class="dropdown ms-3">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
+                        Dansk
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Dansk</a></li>
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- Hero Section -->
-<div class="container hero-section">
-    <div class="row">
-        <div class="col-12">
-            <img src="img/loopiny/loopiny%20logo%201.png" alt="Loopiny Logo" class="mb-3">
-            <p>Køb nyt med god samvittighed<br>Opdag nye spændende produkter med Loopiny tjenesten<br>som normalt ikke er til salg grundet fejl og mangler.<br>Begynd at redde produkter til eksklusive Loopiny priser nu!</p>
-        </div>
-        <div class="col-12">
+
+    <!-- Hero Section -->
+    <div class="container-fluid hero-section" ">
+        <img src="img/loopiny/loopiny%20logo%201.png" alt="Loopiny Logo">
+        <p>
+            <strong>Køb nyt med god samvittighed</strong><br>
+            Opdag nye spændende produkter med Loopiny tjenesten<br>
+            som normalt ikke er til salg grundet fejl og mangler.<br>
+            Begynd at redde produkter til eksklusive Loopiny priser nu!
+        </p>
+        <div>
             <a href="#" class="btn btn-outline-light">Opdag nye produkter</a>
             <a href="#" class="btn btn-outline-light">Benyt Loopiny Erhverv</a>
         </div>
     </div>
+
 </div>
 
 <!-- Content Section -->
@@ -143,8 +160,20 @@ require "settings/init.php";
         <div class="row">
             <div class="col-lg-6">
                 <h2>Loopiny</h2>
-                <p>Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus. Duis molestie porta neque vitae commodo.</p>
-                <p><strong>Nam vitae leo vitae quam viverra scelerisque sit amet vel nisi.</strong></p>
+
+                <p>
+                    Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus.
+                    Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit. Fusce a diam dapibus ligula
+                    faucibus volutpat. Nunc venenatis odio est, ac consectetur magna efficitur eu. Proin sit amet massa
+                    turpis. In vulputate, nulla id ultrices feugiat, est diam mattis dolor, nec pharetra turpis ligula
+                    nec arcu.
+
+                </p>
+
+                <p><strong>                    Proin vestibulum, erat a consequat malesuada, diam justo molestie tellus,
+                        eget iaculis nunc orci a magna. Nunc fermentum pellentesque convallis. Integer id massa eget
+                        tellus mollis tristique. Nam vitae leo vitae quam viverra scelerisque sit amet vel nisi.
+                    </strong></p>
                 <button class="btn btn-success mt-3">Kom i gang</button>
             </div>
             <div class="col-lg-6">
@@ -171,56 +200,74 @@ require "settings/init.php";
     <button class="btn btn-outline-dark">Lightmode</button>
 </div>
 <!-- Sektion: Visionen bag -->
-<div class="content-section">
-    <div class="container">
-        <div class="row text-center mb-4">
-            <div class="col-12">
-                <h2>Visionen bag</h2>
-                <p>
-                    Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus. Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit.
-                </p>
-            </div>
+
+
+    <div class="text-center " style="background-color: #F5F5F0; color: #242424;" >
+        <div class="col-6 mx-auto">
+            <h2>Visionen bag</h2>
+            <p>
+                Hos Loopiny drømmer vi om en verden, hvor varer med små fejl eller mangler ikke går til spilde, men i stedet får en ny chance. Vi ønsker at skabe en platform, der forbinder butikker med kunder, som ser værdien i det uperfekte.
+                Vores vision er at gøre det nemt og tilgængeligt for alle at tage et mere ansvarligt valg, når de handler. Hver plet, ridse eller returvare har en historie, og vi hjælper med at sikre, at den ikke slutter for tidligt. Sammen kan vi mindske spild, udnytte ressourcerne bedre og samtidig tilbyde kunder unikke fund til gode priser.
+                Med Loopiny gør vi det muligt at forvandle små fejl til store muligheder.
+
+
+                Hvert år kasseres store mængder ikke-fødevareprodukter i detailhandlen på grund af små fejl, beskadigelse eller overskud. Eksempelvis smides 677 tons nyt tøj ud årligt i Danmark, ofte fordi returvarer og overproduktion gør det billigere at destruere tøjet end at donere det.
+                I Europa anslås det, at op til 9% af alle tekstiler ødelægges, før de når forbrugeren, og at en tredjedel af returnerede varer købt online ender som affald. Dette kalder på smartere håndtering og mere bevidste valg, hvor produkter får en ny chance fremfor at gå tabt. Loopiny arbejder for at give varer nyt liv – til glæde for miljøet og os alle.
+
+
+                Hos Loopiny er vores vision at skabe en smartere og mere ansvarlig fremtid, hvor produkter får nyt liv i stedet for at gå til spilde. Vi arbejder ud fra tre kerneværdier – Environment (miljø), Social (social ansvarlighed) og Governance (god virksomhedsdrift) – for at gøre en positiv forskel.
+
+            </p>
+            <br><br><br><br><br>
+
         </div>
+    </div>
+
+<div class="content-section">
         <div class="row">
             <div class="col-12 position-relative">
-                <div class="content-box mx-auto d-flex align-items-center justify-content-center position-absolute" style="max-width: 600px; height: 300px; top: -150px; left: 0; right: 0; z-index: 2;">
+                <!-- Indholdsboks korrekt centreret og placeret -->
+                <div class="content-box mx-auto d-flex align-items-center justify-content-center position-absolute"
+                     style="max-width: 600px; height: 300px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
                     <p>Indholdsboks</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 <!-- Sektion: Underoverskrifter og tekst -->
-<div class="content-section" style="background-color: #304229; color: #F5F5F0; padding-top: 200px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>Underoverskrift</h3>
-                <p>
-                    Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus. Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit.
-                </p>
-                <ul>
-                    <li>Proin sit amet massa turpis</li>
-                    <li>Nunc venenatis odio est</li>
-                    <li>Duis molestie</li>
-                    <li>Ac consectetur magna</li>
-                    <li>Nec pharetra</li>
-                </ul>
-                <p>
-                    Proin sit amet massa turpis. In vulputate, nulla id ultrices feugiat, est diam mattis dolor, nec pharetra turpis ligula nec arcu.
-                </p>
-            </div>
-            <div class="col-lg-6" style="background-color: #46643c">
-                <h3>Underoverskrift</h3>
-                <p>
-                    Cras tristique diam a ligula hendrerit tincidunt. Nam a fermentum justo. Nulla facilisi. Donec euismod a mauris at laoreet. Proin in felis faucibus, mattis dolor a, lacinia dui.
-                </p>
-                <p>
-                    Ut nibh diam, dignissim eget scelerisque nec, venenatis a sapien. Aliquam euismod efficitur enim, sit amet molestie massa tincidunt.
-                </p>
-                <button class="btn btn-outline-light mt-3">Kom med ombord</button>
-            </div>
+<div class="container-fluid px-0">
+    <div class="row gx-0 align-items-stretch">
+        <!-- Første content-section -->
+        <div class="col-lg-6 content-section d-flex flex-column justify-content-center"
+             style="background-color: #304229; color: #F5F5F0; padding: 2rem;">
+            <h3>Underoverskrift</h3>
+            <p>
+                Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus. Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit.
+            </p>
+            <ul>
+                <li>Proin sit amet massa turpis</li>
+                <li>Nunc venenatis odio est</li>
+                <li>Duis molestie</li>
+                <li>Ac consectetur magna</li>
+                <li>Nec pharetra</li>
+            </ul>
+            <p>
+                Proin sit amet massa turpis. In vulputate, nulla id ultrices feugiat, est diam mattis dolor, nec pharetra turpis ligula nec arcu.
+            </p>
+        </div>
+        <!-- Anden content-section -->
+        <div class="col-lg-6 content-section d-flex flex-column justify-content-center"
+             style="background-color: #46643c; color: #F5F5F0; padding: 2rem;">
+            <h3>Underoverskrift</h3>
+            <p>
+                Cras tristique diam a ligula hendrerit tincidunt. Nam a fermentum justo. Nulla facilisi. Donec euismod a mauris at laoreet. Proin in felis faucibus, mattis dolor a, lacinia dui.
+            </p>
+            <p>
+                Ut nibh diam, dignissim eget scelerisque nec, venenatis a sapien. Aliquam euismod efficitur enim, sit amet molestie massa tincidunt.
+            </p>
+            <button class="btn btn-outline-light mt-3">Kom med ombord</button>
         </div>
     </div>
 </div>
