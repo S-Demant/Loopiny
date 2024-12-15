@@ -58,39 +58,58 @@ require "../settings/init.php";
                 <?php
                 if ($pageType == 'products') {
                 $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE productReserved = 0 AND categoryShort IN ($filterString) GROUP BY productId ORDER BY $orderString");
-                foreach($products as $product) {
-                    ?>
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100">
-                        <div class="">
-                            <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
-                            <div class="p-2 mx-1 mt-1">
-                                <a href="product.php?productId=<?php echo $product->productId ?>" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
-                                <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
-                            </div>
-                        </div>
-                        <div class="p-2 mx-1 mb-2">
-                            <div class="d-flex justify-content-between">
-                                <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
-                                <span class="text-dark fw-semibold opacity-50">
+                if (empty($products)) {
+                    // Hvis der ikke findes noget resultat
+                    echo '
+                    <div class="text-center mt-4">
+                    <p class="opacity-50 mb-2">Der er ingen produkter som står klar til at blive reddet i øjeblikket. Prøv igen senere, eller med en anden filtrering.</p>
+                    <object type="image/svg+xml" data="../img/icons/tag.svg" class="tag-icon opacity-25"></object>
+                    </div>
+                    ';
+                } else {
+                    foreach($products as $product) {
+                        ?>
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                            <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100">
+                                <div class="">
+                                    <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
+                                    <div class="p-2 mx-1 mt-1">
+                                        <a href="product.php?productId=<?php echo $product->productId ?>" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
+                                        <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
+                                    </div>
+                                </div>
+                                <div class="p-2 mx-1 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
+                                        <span class="text-dark fw-semibold opacity-50">
                                     <?php
                                     $savedPercentage = (($product->productRetailPrice - $product->productPrice) / $product->productRetailPrice) * 100; //Her udregnes besparrelsen i procent
                                     $savedPercentageResult = number_format($savedPercentage); echo "-" . $savedPercentageResult . "%"; //Her omregnes resultatet til et helt tal
                                     ?>
                                 </span>
+                                    </div>
+                                    <hr class="opacity-25 my-2">
+                                    <span class="minimize-text"><?php echo $product->shopName ?></span>
+                                </div>
                             </div>
-                            <hr class="opacity-25 my-2">
-                            <span class="minimize-text"><?php echo $product->shopName ?></span>
                         </div>
-                    </div>
-                </div>
-                    <?php
+                        <?php
+                    }
                 }}
                 ?>
 
                 <?php
                 if ($pageType == 'shops') {
                     $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productShopId = shopId) as productCount FROM shops GROUP BY shopId ORDER BY $orderString");
+                if (empty($shops)) {
+                    // Hvis der ikke findes noget resultat
+                    echo '
+                    <div class="text-center mt-4">
+                    <p class="opacity-50 mb-2">Der er ingen butikker i din valgte søgning i øjeblikket. Prøv igen senere, eller med en anden filtrering.</p>
+                    <object type="image/svg+xml" data="../img/icons/products.svg" class="tag-icon opacity-25"></object>
+                    </div>
+                    ';
+                } else {
                     foreach($shops as $shop) {
                         ?>
                         <div class="col-6 col-md-4 col-lg-3 col-xl-2">
@@ -111,7 +130,8 @@ require "../settings/init.php";
                             </div>
                         </div>
                         <?php
-                    }}
+                    }
+                }}
                 ?>
             </div>
         </div>

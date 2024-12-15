@@ -42,33 +42,43 @@ require "../settings/init.php";
             <div class="row g-3 mt-2">
                 <?php
                 $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN shops ON shopId = productShopId WHERE productReserved = 1 AND productPickedUp = 0 GROUP BY productId ORDER BY productId DESC");
-                foreach($products as $product) {
-                    ?>
-                    <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                        <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100">
-                            <div class="">
-                                <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
-                                <div class="p-2 mx-1 mt-1">
-                                    <a href="product.php?productId=<?php echo $product->productId ?>" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
-                                    <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
+                if (empty($products)) {
+                    // Hvis der ikke findes noget resultat
+                    echo '
+                    <div class="text-center mt-4">
+                    <p class="opacity-50 mb-2">Du har ingen produkter reserveret i øjeblikket.</p>
+                    <object type="image/svg+xml" data="../img/icons/tag.svg" class="tag-icon opacity-25"></object>
+                    </div>
+                    ';
+                } else {
+                    foreach($products as $product) {
+                        ?>
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                            <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100">
+                                <div class="">
+                                    <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
+                                    <div class="p-2 mx-1 mt-1">
+                                        <a href="product.php?productId=<?php echo $product->productId ?>" class="text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></a>
+                                        <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="p-2 mx-1 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
-                                    <span class="text-dark fw-semibold opacity-50">
+                                <div class="p-2 mx-1 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
+                                        <span class="text-dark fw-semibold opacity-50">
                                     <?php
                                     $savedPercentage = (($product->productRetailPrice - $product->productPrice) / $product->productRetailPrice) * 100; //Her udregnes besparrelsen i procent
                                     $savedPercentageResult = number_format($savedPercentage); echo "-" . $savedPercentageResult . "%"; //Her omregnes resultatet til et helt tal
                                     ?>
                                 </span>
+                                    </div>
+                                    <hr class="opacity-25 my-2">
+                                    <span class="minimize-text"><?php echo $product->shopName ?></span>
                                 </div>
-                                <hr class="opacity-25 my-2">
-                                <span class="minimize-text"><?php echo $product->shopName ?></span>
                             </div>
                         </div>
-                    </div>
-                    <?php
+                        <?php
+                    }
                 }
                 ?>
             </div>
@@ -81,33 +91,43 @@ require "../settings/init.php";
             <div class="row g-3 mt-2">
                 <?php
                 $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN shops ON shopId = productShopId WHERE productPickedUp = 1 GROUP BY productId ORDER BY productId DESC");
-                foreach($products as $product) {
-                    ?>
-                    <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                        <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100 opacity-50">
-                            <div class="">
-                                <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
-                                <div class="p-2 mx-1 mt-1">
-                                    <span class="fw-semibold text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></span>
-                                    <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
+                if (empty($products)) {
+                    // Hvis der ikke findes noget resultat
+                    echo '
+                    <div class="text-center mt-4">
+                    <p class="opacity-50 mb-2">Dit første produkt reddet fra destruktion venter stadig på dig.</p>
+                    <object type="image/svg+xml" data="../img/icons/tag.svg" class="tag-icon opacity-25"></object>
+                    </div>
+                    ';
+                } else {
+                    foreach($products as $product) {
+                        ?>
+                        <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                            <div class="loop-card d-flex flex-column justify-content-between position-relative bg-light border border-2 border-light shadow w-100 opacity-50">
+                                <div class="">
+                                    <img src="<?php echo $product->productImage1 ?>" alt="<?php echo $product->productTitle ?>" class="img-fluid w-100">
+                                    <div class="p-2 mx-1 mt-1">
+                                        <span class="fw-semibold text-dark stretched-link" title="Gå til <?php echo $product->productTitle ?>"><?php echo $product->productTitle ?></span>
+                                        <p class="opacity-50 pt-2"><?php echo $product->conditionTitle ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="p-2 mx-1 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
-                                    <span class="text-dark fw-semibold opacity-50">
+                                <div class="p-2 mx-1 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-secondary fw-semibold"><?php echo $product->productPrice ?> DKK</span>
+                                        <span class="text-dark fw-semibold opacity-50">
                                     <?php
                                     $savedPercentage = (($product->productRetailPrice - $product->productPrice) / $product->productRetailPrice) * 100; //Her udregnes besparrelsen i procent
                                     $savedPercentageResult = number_format($savedPercentage); echo "-" . $savedPercentageResult . "%"; //Her omregnes resultatet til et helt tal
                                     ?>
                                 </span>
+                                    </div>
+                                    <hr class="opacity-25 my-2">
+                                    <span class="minimize-text"><?php echo $product->shopName ?></span>
                                 </div>
-                                <hr class="opacity-25 my-2">
-                                <span class="minimize-text"><?php echo $product->shopName ?></span>
                             </div>
                         </div>
-                    </div>
-                    <?php
+                        <?php
+                    }
                 }
                 ?>
             </div>

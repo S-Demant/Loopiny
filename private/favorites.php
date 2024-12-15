@@ -42,6 +42,15 @@ require "../settings/init.php";
             <div class="row g-3 mt-2">
                 <?php
                     $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productShopId = shopId) as productCount FROM shops WHERE shopFavorite = 1 GROUP BY shopId ORDER BY $orderString");
+                if (empty($shops)) {
+                    // Hvis der ikke findes noget resultat
+                    echo '
+                    <div class="text-center mt-4">
+                    <p class="opacity-50 mb-2">Du har ingen butikker valgt som favoritter endnu. Gå på opdagelse, og find dine favoritter nu!</p>
+                    <object type="image/svg+xml" data="../img/icons/products.svg" class="tag-icon opacity-25"></object>
+                    </div>
+                    ';
+                } else {
                     foreach($shops as $shop) {
                         ?>
                         <div class="col-6 col-md-4 col-lg-3 col-xl-2">
@@ -63,6 +72,7 @@ require "../settings/init.php";
                         </div>
                         <?php
                     }
+                }
                 ?>
             </div>
         </div>
