@@ -13,7 +13,7 @@ require "settings/init.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: url('img/hero-texture.webp') no-repeat center center fixed;
+            background: url('img/loopiny/hero-texture.webp') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Glory', sans-serif;
             color: white;
@@ -111,7 +111,7 @@ require "settings/init.php";
             <button class="btn btn-outline-light ms-2">Loopiny Privat</button>
             <button class="btn btn-outline-light ms-2">Loopiny Erhverv</button>
             <div class="dropdown ms-3">
-                <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
+                <button class="btn btn-outline-light dropdown-toggle dropdown ms-3" type="button" id="languageDropdown" data-bs-toggle="dropdown">
                     Dansk
                 </button>
                 <ul class="dropdown-menu">
@@ -128,7 +128,6 @@ require "settings/init.php";
     <div class="row">
         <div class="col-12">
             <img src="img/loopiny/loopiny%20logo%201.png" alt="Loopiny Logo" class="mb-3">
-            <h1>Loopiny</h1>
             <p>Køb nyt med god samvittighed<br>Opdag nye spændende produkter med Loopiny tjenesten<br>som normalt ikke er til salg grundet fejl og mangler.<br>Begynd at redde produkter til eksklusive Loopiny priser nu!</p>
         </div>
         <div class="col-12">
