@@ -50,6 +50,7 @@ if (!empty($_POST["data"])) {
                 $newWidth = 720;
                 $newHeight = 540;
 
+                // Håndter forskellige billedtyper korrekt, inklusive webp
                 if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
                     $srcImage = imagecreatefromjpeg($tempFile);
                 } elseif ($imageFileType == "png") {
@@ -61,7 +62,17 @@ if (!empty($_POST["data"])) {
                     exit;
                 }
 
+                if ($srcImage === false) {
+                    echo "Fejl ved oprettelse af billedressource fra fil.";
+                    exit;
+                }
+
                 $dstImage = imagecreatetruecolor($newWidth, $newHeight);
+                if (!$dstImage) {
+                    echo "Fejl ved oprettelse af ny billedressource.";
+                    exit;
+                }
+
                 imagecopyresampled($dstImage, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($srcImage), imagesy($srcImage));
 
                 // Gem det komprimerede billede som .webp
@@ -69,8 +80,10 @@ if (!empty($_POST["data"])) {
                     echo "Billedet er blevet komprimeret og konverteret til .webp format.";
                     imagedestroy($srcImage);
                     imagedestroy($dstImage);
-                    // Fjern den midlertidige fil
-                    unlink($tempFile);
+                    // Fjern den midlertidige fil kun hvis den ikke er .webp
+                    if ($imageFileType != "webp") {
+                        unlink($tempFile);
+                    }
                 } else {
                     echo "Der var en fejl ved konvertering til .webp format.";
                     imagedestroy($srcImage);
@@ -219,8 +232,8 @@ if (!empty($_POST["data"])) {
                     <div class="col-12 col-sm-6">
                         <div class="mb-4 pb-2">
                             <label for="uploadImage" class="form-label fw-semibold">Billede af produktet *</label>
-                            <p class="mb-2">Vi accepterer billeder af filtypen png, jpeg, jpg og webp.</p>
-                            <input type="file" class="form-control-file" id="uploadImage" name="productImage1" accept="image/png, image/jpeg, image/webp" required>
+                            <p class="mb-2">Vi accepterer billeder af filtypen png, jpg, jpeg og webp.</p>
+                            <input type="file" class="form-control-file" id="uploadImage" name="productImage1" accept="image/png, image/jpg, image/jpeg, image/webp" required>
                         </div>
                     </div>
                     <div class="col-12">

@@ -40,7 +40,7 @@ require "../settings/init.php";
         <div class="container">
             <div class="row g-3 mt-2">
                 <?php
-                $sql = "SELECT COUNT(productId) AS savedProductCount FROM products WHERE productPickedUp = '1' AND productShopId = '1'";
+                $sql = "SELECT COUNT(productId) AS savedProductCount FROM products WHERE productPickedUp = '1' AND productShopId = '5'";
                 $result = $db->sql($sql);
 
                 // Hent første række fra resultatet
