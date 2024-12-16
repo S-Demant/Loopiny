@@ -59,13 +59,21 @@ require "settings/init.php";
             color: white;
         }
 
+        .content-box1 {
+            background-color: #242424;
+            height: 400px;
+            color: white;
+        }
+
+
 
 
         .lightmode-switch {
-            position: fixed;
+            color: #F5F5F0;
             bottom: 20px;
             left: 20px;
             z-index: 1000;
+
         }
 
 
@@ -116,7 +124,7 @@ require "settings/init.php";
 
             <!-- Logo i midten -->
             <a class="navbar-brand position-absolute start-50 translate-middle-x" href="#">
-                <img src="img/loopiny/loopiny-logo-top.webp" alt="Loopiny Logo" style="height: 50px;">
+                <img src="img/loopiny/loopiny%20logo%20uden%20tekst.png" alt="Loopiny Logo" style="height: 50px;">
             </a>
 
             <!-- Højre links -->
@@ -152,6 +160,11 @@ require "settings/init.php";
         </div>
     </div>
 
+<!-- Lightmode Switch -->
+<div class="lightmode-switch">
+    <button class="btn btn-outline-light">Lightmode</button>
+</div>
+
 </div>
 
 <!-- Content Section -->
@@ -177,7 +190,7 @@ require "settings/init.php";
                 <button class="btn btn-success mt-3">Kom i gang</button>
             </div>
             <div class="col-lg-6">
-                <div class="content-box d-flex align-items-center justify-content-center">
+                <div class="content-box1 d-flex align-items-center justify-content-center">
                     <p>Indholdsboks</p>
                 </div>
             </div>
@@ -187,18 +200,18 @@ require "settings/init.php";
 
 
 <div class="content-section">
-
-    <div class="col-lg-6">
-        <div class="content-box d-flex align-items-center justify-content-center">
-            <p>Indholdsboks</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="content-box1 d-flex align-items-center justify-content-center" style="height: 600px">
+                    <p>Indholdsboks</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Lightmode Switch -->
-<div class="lightmode-switch">
-    <button class="btn btn-outline-dark">Lightmode</button>
-</div>
+
 <!-- Sektion: Visionen bag -->
 
 
@@ -218,7 +231,7 @@ require "settings/init.php";
                 Hos Loopiny er vores vision at skabe en smartere og mere ansvarlig fremtid, hvor produkter får nyt liv i stedet for at gå til spilde. Vi arbejder ud fra tre kerneværdier – Environment (miljø), Social (social ansvarlighed) og Governance (god virksomhedsdrift) – for at gøre en positiv forskel.
 
             </p>
-            <br><br><br><br><br>
+            <br><br><br><br><br><br><br>
 
         </div>
     </div>
@@ -226,9 +239,9 @@ require "settings/init.php";
 <div class="content-section">
         <div class="row">
             <div class="col-12 position-relative">
-                <!-- Indholdsboks korrekt centreret og placeret -->
+
                 <div class="content-box mx-auto d-flex align-items-center justify-content-center position-absolute"
-                     style="max-width: 600px; height: 300px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
+                     style=" height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
                     <p>Indholdsboks</p>
                 </div>
             </div>
@@ -241,7 +254,7 @@ require "settings/init.php";
     <div class="row gx-0 align-items-stretch">
         <!-- Første content-section -->
         <div class="col-lg-6 content-section d-flex flex-column justify-content-center"
-             style="background-color: #304229; color: #F5F5F0; padding: 2rem;">
+             style="background-color: #304229; color: #F5F5F0; padding: 2rem; padding-top: 200px">
             <h3>Underoverskrift</h3>
             <p>
                 Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus. Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit.
@@ -259,7 +272,7 @@ require "settings/init.php";
         </div>
         <!-- Anden content-section -->
         <div class="col-lg-6 content-section d-flex flex-column justify-content-center"
-             style="background-color: #46643c; color: #F5F5F0; padding: 2rem;">
+             style="background-color: #46643c; color: #F5F5F0; padding: 2rem; padding-top: 200px">
             <h3>Underoverskrift</h3>
             <p>
                 Cras tristique diam a ligula hendrerit tincidunt. Nam a fermentum justo. Nulla facilisi. Donec euismod a mauris at laoreet. Proin in felis faucibus, mattis dolor a, lacinia dui.
@@ -276,14 +289,14 @@ require "settings/init.php";
 
 <!-- Sektion: Call-to-action -->
 <div class="content-section text-center" style="background-color: #f5f5f0; color: #242424; padding: 2rem;">
-    <div class="container">
+    <div class="container ">
         <h2>Sammen reducerer vi spild!</h2>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="content-box"></div>
+        <div class="row justify-content-center">
+            <div class="col-md-4" >
+                <div class="content-box1"></div>
             </div>
-            <div class="col-md-6">
-                <div class="content-box"></div>
+            <div class="col-md-4">
+                <div class="content-box1" ></div>
             </div>
         </div>
     </div>
@@ -294,7 +307,7 @@ require "settings/init.php";
     <div class="container">
         <div class="row g-4">
             <div class="col-md-6">
-                <div class="content-box"></div>
+                <div class="content-box1"></div>
             </div>
             <div class="col-md-6">
                 <h2>Hvem er Loopiny?</h2>
@@ -321,39 +334,37 @@ require "settings/init.php";
 </div>
 
 <!-- Sektion: Identitet og certifikater -->
-<div class="content-section">
+<div class="content-section" style="background-color: #f5f5f0; color: #242424; padding: 3rem 0;">
     <div class="container">
-
-        <div class="row g-4">
-            <div class="col-md-2">
-                <div class="content-box"></div>
+        <div class="row g-4 align-items-center">
+            <!-- Venstre små bokse rykket mod højre -->
+            <div class="col-md-2 offset-md-1 d-flex justify-content-center">
+                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"></div>
             </div>
-            <div class="col-md-2">
-                <div class="content-box"></div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"></div>
             </div>
-            <div class="col-md-8">
+            <!-- Højre tekst -->
+            <div class="col-md-7">
                 <h2>Identitet og certifikater</h2>
                 <p>
                     Hos Loopiny går vi forrest for at fremme en mere klimavenlig tilgang til forbrug. Vi arbejder
                     aktivt for at reducere spild ved at give varer med små fejl eller mangler en ny chance og dermed
-                    sikre, at ressourcer udnyttes til deres fulde potentiale
+                    sikre, at ressourcer udnyttes til deres fulde potentiale.
                 </p>
                 <p>
                     Vores samarbejde med butikker inkluderer høje krav til ansvarlighed, og vi samarbejder med
                     partnere, der deler vores vision om en grønnere fremtid.
                 </p>
-
                 <p>
                     Loopiny er en del af en større bevægelse mod en mere cirkulær økonomi, hvor varer, der ellers ville
                     gå til spilde, finder nye ejere. Vores platform gør det nemt for dig at tage et klimavenligt valg i
                     hverdagen – og samtidig finde unikke varer til gode priser.
-
                 </p>
+                <p>
                     Ved at vælge Loopiny bidrager du aktivt til en grønnere fremtid og støtter butikker, der arbejder
                     for at reducere deres klimaaftryk. Sammen kan vi gøre en forskel, én vare ad gangen.
-                <p>
-
-
+                </p>
             </div>
         </div>
     </div>
@@ -361,7 +372,7 @@ require "settings/init.php";
 
 
 <!-- Blogindlæg Sektion -->
-<div class="section py-5">
+<div class="section py-5" style="background-color: #304229">
     <div class="container">
         <!-- Overskrift -->
         <h2 class="text-center mb-5 text-dark">Bliv inspireret af vores blogindlæg</h2>
@@ -370,7 +381,7 @@ require "settings/init.php";
         <div class="row row-cols-1 row-cols-md-4 g-4">
             <!-- Kort 1 -->
             <div class="col">
-                <div class="card h-100 bg-dark text-white border-0">
+                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
                     <div class="card-body">
                         <h5 class="card-title">Blogindlæg 1</h5>
                         <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
@@ -379,7 +390,7 @@ require "settings/init.php";
             </div>
             <!-- Kort 2 -->
             <div class="col">
-                <div class="card h-100 bg-dark text-white border-0">
+                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
                     <div class="card-body">
                         <h5 class="card-title">Blogindlæg 2</h5>
                         <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
@@ -388,7 +399,7 @@ require "settings/init.php";
             </div>
             <!-- Kort 3 -->
             <div class="col">
-                <div class="card h-100 bg-dark text-white border-0">
+                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
                     <div class="card-body">
                         <h5 class="card-title">Blogindlæg 3</h5>
                         <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
@@ -397,7 +408,7 @@ require "settings/init.php";
             </div>
             <!-- Kort 4 -->
             <div class="col">
-                <div class="card h-100 bg-dark text-white border-0">
+                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
                     <div class="card-body">
                         <h5 class="card-title">Blogindlæg 4</h5>
                         <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
@@ -420,7 +431,7 @@ require "settings/init.php";
 </div>
 
 <!-- Footer -->
-<footer class="bg-dark text-white py-5">
+<footer class="text-white py-5" style="background-color: #46643c">
     <div class="container">
         <div class="row">
             <!-- Support Privat -->
