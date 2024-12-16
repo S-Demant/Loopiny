@@ -7,12 +7,19 @@ if (!empty($_POST["data"])) {
 
     // Håndter filuploaden
     if (!empty($_FILES["productImage1"])) {
+
+        // Hent det nyeste productId til filnavnet
+        $sql = "SELECT MAX(productId) AS latestProductId FROM products";
+        $result = $db->sql($sql);
+        $latestProduct = $result[0];
+        $productId = $latestProduct->latestProductId + 1; // Forøg med 1 for det nye produkt
+
         $image = $_FILES["productImage1"];
         $targetDir = "../img/uploads/product/";
         $imageFileType = strtolower(pathinfo($image["name"], PATHINFO_EXTENSION));
 
-        // Opret et nyt filnavn med .webp udvidelse
-        $newFileName = pathinfo($image["name"], PATHINFO_FILENAME) . '.webp';
+        // Inkluder productId i det nye filnavn
+        $newFileName = $productId . '_' . pathinfo($image["name"], PATHINFO_FILENAME) . '.webp';
         $targetFile = $targetDir . $newFileName;
         $uploadOk = 1;
 
@@ -98,7 +105,7 @@ if (!empty($_POST["data"])) {
         }
     }
 
-    $sql = "INSERT INTO products (productTitle, productCategoryId, productShopId, productPrice, productRetailPrice, productImage1, productImage2, productDescription) VALUES (:productTitle, :productCategoryId, :productShopId, :productPrice, :productRetailPrice, :productImage1, :productImage2, :productDescription)";
+    $sql = "INSERT INTO products (productTitle, productCategoryId, productShopId, productPrice, productRetailPrice, productImage1, productShopImage, productDescription) VALUES (:productTitle, :productCategoryId, :productShopId, :productPrice, :productRetailPrice, :productImage1, :productShopImage, :productDescription)";
     $bind = [
         ":productTitle" => $data["productTitle"],
         ":productCategoryId" => $data["productCategoryId"],
@@ -106,14 +113,14 @@ if (!empty($_POST["data"])) {
         ":productPrice" => $data["productPrice"],
         ":productRetailPrice" => $data["productRetailPrice"],
         ":productImage1" => $data["productImage1"],
-        ":productImage2" => $data["productImage2"],
+        ":productShopImage" => $data["productShopImage"],
         ":productDescription" => $data["productDescription"]
     ];
 
     $db->sql($sql, $bind, false);
 
     // Hent det nyligt indsatte productId med en SELECT-forespørgsel
-    $sql = "SELECT productId FROM products WHERE productTitle = :productTitle AND (productCategoryId = :productCategoryId OR :productCategoryId IS NULL) AND (productShopId = :productShopId OR :productShopId IS NULL) AND (productPrice = :productPrice OR :productPrice IS NULL) AND (productRetailPrice = :productRetailPrice OR :productRetailPrice IS NULL) AND (productImage1 = :productImage1 OR :productImage1 IS NULL) AND (productImage2 = :productImage2 OR :productImage2 IS NULL) AND productDescription = :productDescription ORDER BY productId DESC LIMIT 1";
+    $sql = "SELECT productId FROM products WHERE productTitle = :productTitle AND (productCategoryId = :productCategoryId OR :productCategoryId IS NULL) AND (productShopId = :productShopId OR :productShopId IS NULL) AND (productPrice = :productPrice OR :productPrice IS NULL) AND (productRetailPrice = :productRetailPrice OR :productRetailPrice IS NULL) AND (productImage1 = :productImage1 OR :productImage1 IS NULL) AND (productShopImage = :productShopImage OR :productShopImage IS NULL) AND productDescription = :productDescription ORDER BY productId DESC LIMIT 1";
     $stmt = $db->sql($sql, $bind, false);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -135,7 +142,7 @@ if (!empty($_POST["data"])) {
         }
 
         // Rediriger til success side
-        header("Location: create.php?success=1");
+        header("Location: myproducts.php?success=1");
         exit();
     } else {
         echo "Produktet blev ikke fundet.";
@@ -171,11 +178,6 @@ if (!empty($_POST["data"])) {
     <section>
         <div class="container">
             <div class="text-center">
-                <?php
-                if (!empty($_GET["success"]) && $_GET["success"] == 1) {
-                    echo '<div class="mb-3"><h5 class="text-success">Produktet er oprettet!</h5></div>';
-                }
-                ?>
                 <h2 class="text-primary fw-semibold mb-1">Sæt dit produkt til salg med Loopiny</h2>
                 <span>Produktet skal indeholde en fyldestgørende titel, et billede af produktet, samt en årsag til hvorfor produktet er tilgængeligt i Loopiny tjenesten</span>
             </div>
@@ -252,7 +254,18 @@ if (!empty($_POST["data"])) {
                         </div>
                         <div class="d-none">
                             <input type="text" class="form-control" id="shop" name="data[productShopId]" aria-describedby="Butik der har produktet" value="5">
-                        </div>
+
+                            <?php
+                            $productId = $_GET["productId"];
+                            $shops = $db->sql("SELECT * FROM shops WHERE shopId = '5'");
+                            foreach($shops as $shop) {
+                                ?>
+                                <input type="text" class="form-control" id="shop" name="data[productShopImage]" aria-describedby="Butik der har produktet" value="<?php echo $shop->shopImage ?>">
+                                <?php
+                            }
+                            ?>
+
+                           </div>
                         <button type="submit" class="btn btn-primary fw-semibold rounded-3 px-5 py-2 mt-2">Opret produkt</button>
                     </div>
                 </div>
