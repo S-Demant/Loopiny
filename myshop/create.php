@@ -130,9 +130,6 @@ if (!empty($_POST["data"])) {
 }
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -241,7 +238,7 @@ if (!empty($_POST["data"])) {
                             <label class="form-check-label" for="accept">Ved oprettelse af produktet accepterer du vilkår og betingelser fra Loopiny om gældende håndtering, handel og ansvar. Læs vores handelspolitik her</label>
                         </div>
                         <div class="d-none">
-                            <input type="text" class="form-control" id="shop" name="data[productShopId]" aria-describedby="Butik der har produktet" value="2">
+                            <input type="text" class="form-control" id="shop" name="data[productShopId]" aria-describedby="Butik der har produktet" value="5">
                         </div>
                         <button type="submit" class="btn btn-primary fw-semibold rounded-3 px-5 py-2 mt-2">Opret produkt</button>
                     </div>
