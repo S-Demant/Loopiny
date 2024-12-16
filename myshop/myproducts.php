@@ -109,7 +109,7 @@ require "../settings/init.php";
 <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    //
+    // Registrer produktet som afhentet
     document.querySelector("#pickItUp").addEventListener("click", function() {
         const productId = this.getAttribute("data-product-id"); // Henter produktId'et fra data-attributten
         if (confirm("Du er ved at angive dette produkt som afhentet. Er dette korrekt?")) {
