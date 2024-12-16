@@ -128,7 +128,7 @@ if($product->productPickedUp != '1') {
         <section>
             <div class="container">
                 <div class="mt-2 text-center">
-                    <a href="#" class="btn btn-outline-light text-light fw-semibold rounded-4 py-1 px-5 mt-2">Gå til oversigt</a>
+                    <a href="overview.php" class="btn btn-outline-light text-light fw-semibold rounded-4 py-1 px-5 mt-2">Gå til oversigt</a>
                 </div>
             </div>
         </section>
