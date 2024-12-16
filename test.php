@@ -9,101 +9,178 @@ require "settings/init.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loopiny</title>
 
-    <meta name="robots" content="All">
-    <meta name="author" content="Udgiver">
-    <meta name="copyright" content="Information om copyright">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #F5F5F0;
+            font-family: 'Glory', sans-serif;
+            color: white;
+        }
 
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Glory:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        .hero-section {
+            text-align: center;
+            padding: 6rem 1rem; /* Ekstra højde */
+        }
+
+        .hero-section .btn {
+            margin: 0.5rem;
+            border: 2px solid white;
+            color: white;
+            padding: 0.5rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            margin: 1rem auto;
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+
+
+        .content-section {
+            background-color: #f5f5f0;
+            color: #242424;
+            padding: 4rem 1rem;
+        }
+
+        .content-section h2 {
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .content-box {
+            background-color: #242424;
+            height: 200px;
+            color: white;
+        }
+
+        .content-box1 {
+            background-color: #242424;
+            height: 400px;
+            color: white;
+        }
+
+
+
+
+        .lightmode-switch {
+            color: #F5F5F0;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+
+        }
+
+
+
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+
+
+        .navbar .nav-link,
+        .navbar .btn,
+        .navbar .dropdown-toggle {
+            color: white !important; /* Sørg for, at teksten stadig er hvid */
+            font-weight: 500; /* Gør teksten lidt tykkere for bedre synlighed */
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .btn:hover,
+        .navbar .dropdown-toggle:hover {
+            color: #dcdcdc !important; /* Lysere farve ved hover */
+        }
+
+
+
+
+
+
+
+
+    </style>
 </head>
-
 <body>
+<div class="container-fluid" style="background-image: url('img/loopiny/hero-texture.webp'); background-color: #304229" >
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <!-- Logo i midten (mobil og desktop) -->
+            <a class="navbar-brand mx-auto d-lg-none" href="#">
+                <img src="img/loopiny/loopiny%20logo%20uden%20tekst.png" alt="Loopiny Logo" style="height: 50px;">
+            </a>
 
-<header>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container position-relative">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Navbar Toggler til mobil -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse text-start" id="navbarToggler">
-                <div class="d-flex justify-content-between w-100">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item me-3 me-lg-0">
-                            <a class="nav-link fw-semibold" href="#">Vores tjeneste</a>
-                        </li>
-                        <li class="nav-item me-3 me-lg-0 mx-lg-4">
-                            <a class="nav-link fw-semibold" href="#">Vores vision</a>
-                        </li>
-                        <li class="nav-item me-3 me-lg-0 mx-lg-4">
-                            <a class="nav-link fw-semibold" href="#">Om Loopiny</a>
-                        </li>
-                        <li class="nav-item me-lg-0 ms-lg-4">
-                            <a class="nav-link fw-semibold" href="#">Blogindlæg</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="dropdown language-in">
-                    <button class="btn fw-semibold link-light dropdown-toggle ps-0" type="button" id="languageDropdown" data-bs-toggle="dropdown">Dansk</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Dansk</a></li>
-                        <li><a class="dropdown-item" href="#">English</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="position-absolute top-0 end-0 d-flex gap-2">
-                <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Privat</a>
-                <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Erhverv</a>
-                <div class="dropdown language-out">
-                    <button class="btn fw-semibold link-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">Dansk</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Dansk</a></li>
-                        <li><a class="dropdown-item" href="#">English</a></li>
-                    </ul>
+
+            <!-- Indholdet af navbaren -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Venstre links -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Vores tjeneste</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Vores vision</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Om Loopiny</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blogindlæg</a></li>
+                </ul>
+
+                <!-- Logo i midten til større skærme -->
+                <a class="navbar-brand position-absolute d-none d-lg-block start-50 translate-middle-x" href="#">
+                    <img src="img/loopiny/loopiny%20logo%20uden%20tekst.png" alt="Loopiny Logo" style="height: 50px;">
+                </a>
+
+                <!-- Højre links -->
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-light ms-2">Loopiny Privat</button>
+                    <button class="btn btn-outline-light ms-2">Loopiny Erhverv</button>
+                    <div class="dropdown ms-3">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
+                            Dansk
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Dansk</a></li>
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-</header>
 
-<section>
-    <div class="container-fluid hero d-flex align-items-center">
-        <div class="hero-image w-100 h-100">
-            <div class="container h-100">
-                <div class="text-center align-content-center h-100">
-                    <img src="img/loopiny/loopiny-logo-hero.webp" class="img-fluid" alt="Loopiny logo">
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-md-8 col-xl-4">
-                            <p class="fw-semibold text-light mt-4 mb-0">Køb nyt med god samvittighed</p>
-                            <p class="text-light">Opdag nye spændende produkter med Loopiny tjenesten som normalt ikke er til salg grundet fejl og mangler. Begynd at redde produkter til eksklusive Loopiny priser nu!</p>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center my-3">
-                        <div class="col-12 col-md-6 col-xl-4">
-                            <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold w-100 py-3">Opdag nye produkter</a>
-                        </div>
-                        <div class="col-12 col-md-6 col-xl-4 mt-3 mt-md-0">
-                            <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold w-100 py-3">Benyt Loopiny Erhverv</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <!-- Hero Section -->
+    <div class="container-fluid hero-section" ">
+    <img src="img/loopiny/loopiny%20logo%201.png" alt="Loopiny Logo">
+    <p>
+        <strong>Køb nyt med god samvittighed</strong><br>
+        Opdag nye spændende produkter med Loopiny tjenesten<br>
+        som normalt ikke er til salg grundet fejl og mangler.<br>
+        Begynd at redde produkter til eksklusive Loopiny priser nu!
+    </p>
+    <div>
+        <a href="#" class="btn btn-outline-light">Opdag nye produkter</a>
+        <a href="#" class="btn btn-outline-light">Benyt Loopiny Erhverv</a>
     </div>
-</section>
-
+</div>
 
 <!-- Lightmode Switch -->
 <div class="lightmode-switch">
     <button class="btn btn-outline-light">Lightmode</button>
 </div>
 
-
+</div>
 
 <!-- Content Section -->
 <div class="content-section">
@@ -151,33 +228,33 @@ require "settings/init.php";
 <!-- Sektion: Visionen bag -->
 
 
-    <div class="text-center " style="background-color: #F5F5F0; color: #242424;" >
-        <div class="col-6 mx-auto">
-            <h2>Visionen bag</h2>
-            <p>
-                Hos Loopiny drømmer vi om en verden, hvor varer med små fejl eller mangler ikke går til spilde, men i stedet får en ny chance. Vi ønsker at skabe en platform, der forbinder butikker med kunder, som ser værdien i det uperfekte.
-                Vores vision er at gøre det nemt og tilgængeligt for alle at tage et mere ansvarligt valg, når de handler. Hver plet, ridse eller returvare har en historie, og vi hjælper med at sikre, at den ikke slutter for tidligt. Sammen kan vi mindske spild, udnytte ressourcerne bedre og samtidig tilbyde kunder unikke fund til gode priser.
-                Med Loopiny gør vi det muligt at forvandle små fejl til store muligheder.
+<div class="text-center " style="background-color: #F5F5F0; color: #242424;" >
+    <div class="col-6 mx-auto">
+        <h2>Visionen bag</h2>
+        <p>
+            Hos Loopiny drømmer vi om en verden, hvor varer med små fejl eller mangler ikke går til spilde, men i stedet får en ny chance. Vi ønsker at skabe en platform, der forbinder butikker med kunder, som ser værdien i det uperfekte.
+            Vores vision er at gøre det nemt og tilgængeligt for alle at tage et mere ansvarligt valg, når de handler. Hver plet, ridse eller returvare har en historie, og vi hjælper med at sikre, at den ikke slutter for tidligt. Sammen kan vi mindske spild, udnytte ressourcerne bedre og samtidig tilbyde kunder unikke fund til gode priser.
+            Med Loopiny gør vi det muligt at forvandle små fejl til store muligheder.
 
 
 
-            </p>
-            <br><br><br><br><br><br><br>
+        </p>
+        <br><br><br><br><br><br><br>
 
-        </div>
     </div>
+</div>
 
 <div class="content-section">
-        <div class="row">
-            <div class="col-12 position-relative">
+    <div class="row">
+        <div class="col-12 position-relative">
 
-                <div class="content-box mx-auto d-flex align-items-center justify-content-center position-absolute"
-                     style=" height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-                    <p>Indholdsboks</p>
-                </div>
+            <div class="content-box mx-auto d-flex align-items-center justify-content-center position-absolute"
+                 style=" height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
+                <p>Indholdsboks</p>
             </div>
         </div>
     </div>
+</div>
 
 
 <!-- Sektion: Underoverskrifter og tekst -->
@@ -408,23 +485,5 @@ require "settings/init.php";
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    let navbar = document.querySelector('.navbar');
-    let navbarToggler = document.querySelector('.navbar-toggler');
-
-    navbarToggler.addEventListener('click', showNav); // Aktiver funktion når der klikkes på menu toggler
-    window.addEventListener('scroll', showNav); // Aktiver funktionen når der scrolles
-
-    function showNav() {
-        var y = window.scrollY;
-        if (y > 100 || window.innerWidth < 992) { // Når man er scrollet 100+ ned, eller hvis skærmen er lille, gøres der efterfølgende
-            navbar.classList.add('bg-primary', 'bg-opacity-85', 'shadow', 'nav-blur');
-        } else {
-            navbar.classList.remove('bg-primary', 'bg-opacity-85', 'shadow', 'nav-blur');
-        }
-    }
-</script>
-
 </body>
 </html>

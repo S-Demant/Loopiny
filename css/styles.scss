@@ -9,6 +9,18 @@ $light: #F5F5F0;
 $dark: #242424;
 // Links
 $link-decoration: none;
+// Nav
+$navbar-light-color: $light;
+$link-shade-percentage: 30%;
+$navbar-light-active-color: shift-color($navbar-light-color, $link-shade-percentage);
+$navbar-light-hover-color: shift-color($navbar-light-color, $link-shade-percentage);
+$navbar-toggler-font-size: 18pt;
+$navbar-light-disabled-color: $light;
+$navbar-light-icon-color: $light;
+$navbar-light-toggler-border-color: none;
+$navbar-toggler-focus-width: 0px;
+$dropdown-bg: $light;
+$dropdown-border-width: 0px;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
@@ -52,3 +64,85 @@ body, html {
 	letter-spacing: 0.2px;
 }
 
+// nav
+header {
+	.navbar {
+		min-height: 75px;
+		transition: all 800ms;
+	}
+
+	.nav-blur {
+		-webkit-backdrop-filter: blur(10px); // For Safari //
+		backdrop-filter: blur(10px); // For Chrome //
+	}
+
+	.btn-loop {
+		width: 9rem;
+		border-radius: 20px 0 20px 0;
+
+		@include breakpoint($medium) {
+			width: 10rem;
+		}
+
+		@include breakpoint($large) {
+			width: 11rem;
+		}
+
+		@include breakpoint($xtraLarge) {
+			width: 14rem;
+		}
+	}
+
+	.language-in {
+		display: block;
+
+		@include breakpoint($large) {
+			display: none;
+		}
+	}
+
+	.language-out {
+		display: none;
+
+		@include breakpoint($large) {
+			display: block;
+		}
+	}
+}
+
+// hero
+.hero {
+	margin: 0;
+	padding: 0;
+	height: 800px;
+	background: linear-gradient(
+		to bottom,
+		$secondary 0%,
+		$primary 100%
+	);
+}
+
+.hero-image {
+	margin: 0;
+	padding: 0;
+	background-image: url("../img/loopiny/hero-texture.webp");
+}
+
+.hero-btn {
+	width: 100%;
+
+	@include breakpoint($medium) {
+		width: 90%;
+	}
+}
+
+// btn
+.btn-outline-light {
+	&:hover {
+		color: $dark;
+	}
+}
+
+.btn-loop {
+	border-radius: 25px 0 25px 0;
+}
