@@ -41,7 +41,7 @@ require "../settings/init.php";
         <div class="container">
             <div class="row g-3 mt-2">
                 <?php
-                    $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productShopId = shopId) as productCount FROM shops WHERE shopFavorite = 1 GROUP BY shopId ORDER BY $orderString");
+                    $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productReserved != 1 AND productShopId = shopId) as productCount FROM shops WHERE shopFavorite = 1 GROUP BY shopId ORDER BY $orderString");
                 if (empty($shops)) {
                     // Hvis der ikke findes noget resultat
                     echo '

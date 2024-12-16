@@ -35,18 +35,18 @@ if (str_contains($url, 'type=shops') || str_contains($url, 'favorites')) {
                         <div class="mb-3">
                             <label for="location" class="form-label fw-semibold">Lokation</label>
                             <select class="form-select" aria-label="location">
-                                <option selected>Vælg din lokation</option>
-                                <option value="4200">4200 Holbæk</option>
-                                <option value="4300">4300 Slagelse</option>
+                                <option>Vælg din lokation</option>
+                                <option selected value="4200">4200 Slagelse</option>
+                                <option value="4300">4300 Holbæk</option>
                                 <option value="4400">4400 Kalundborg</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="distance" class="form-label fw-semibold">Afstand</label>
                             <select class="form-select" aria-label="distance">
-                                <option selected>Vælg maks afstand fra lokation</option>
-                                <option value="0">Din lokation</option>
-                                <option value="3">Inden for 3 km.</option>
+                                <option>Vælg maks afstand fra lokation</option>
+                                <option value="1">Inden for 1 km.</option>
+                                <option selected value="3">Inden for 3 km.</option>
                                 <option value="5">Inden for 5 km.</option>
                             </select>
                         </div>

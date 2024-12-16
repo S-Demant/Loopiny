@@ -7,7 +7,7 @@ if(empty($_GET["shopId"])) {
 }
 
 $shopId = $_GET["shopId"];
-$shop = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productShopId = shopId) as productCount FROM shops WHERE shopId = :shopId", [":shopId" => $shopId]);
+$shop = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productReserved != 1 AND productShopId = shopId) as productCount FROM shops WHERE shopId = :shopId", [":shopId" => $shopId]);
 $shop = $shop[0];
 ?>
 
@@ -73,7 +73,7 @@ $shop = $shop[0];
             </div>
             <div class="row g-3">
                 <?php
-                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE shopId = $shopId AND productReserved = 0 GROUP BY productId ORDER BY productId DESC ");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN categories ON categoryId = productCategoryId INNER JOIN shops ON shopId = productShopId WHERE productReserved != 1 AND shopId = $shopId AND productReserved = 0 GROUP BY productId ORDER BY productId DESC ");
                 foreach($products as $product) {
                     ?>
                     <div class="col-6 col-md-4 col-lg-3 col-xl-2">

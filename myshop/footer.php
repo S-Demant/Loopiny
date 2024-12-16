@@ -26,7 +26,7 @@
                         <div class="position-relative align-content-center w-100 pt-1">
                             <object type="image/svg+xml" data="../img/icons/settings.svg" class="icons mb-1"></object>
                             <br>
-                            <a href="#" class="stretched-link text-dark" title="Ændre indstillinger" aria-label="Indstillinger">Indstillinger</a>
+                            <a href="settings.php" class="stretched-link text-dark" title="Ændre indstillinger" aria-label="Indstillinger">Indstillinger</a>
                         </div>
                     </div>
                 </div>

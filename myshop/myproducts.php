@@ -1,7 +1,21 @@
 <?php
 require "../classes/classDB.php";
 require "../settings/init.php";
+
+// Tjek om success parameteren er sat i URL'en
+$showAlert = false;
+if (isset($_GET['success']) && $_GET['success'] == '1') {
+    $showAlert = true;
+}
 ?>
+
+<?php if ($showAlert): ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            alert("Produktet er nu oprettet.");
+        });
+    </script>
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="da">

@@ -38,7 +38,7 @@ require "../settings/init.php";
                         echo 'Butikker nær dig som er en del af Loopiny';
                     } ?>
                 </h2>
-                <span>Inden for 8 km. fra 4400 Kalundborg</span>
+                <span>Inden for 3 km. fra 4200 Slagelse</span>
             </div>
             <form>
                 <div class="d-flex text-center mt-2 mb-3">
@@ -100,7 +100,7 @@ require "../settings/init.php";
 
                 <?php
                 if ($pageType == 'shops') {
-                    $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productShopId = shopId) as productCount FROM shops GROUP BY shopId ORDER BY $orderString");
+                    $shops = $db->sql("SELECT *, (SELECT COUNT(*) FROM products WHERE productReserved != 1 AND productShopId = shopId) as productCount FROM shops GROUP BY shopId ORDER BY $orderString");
                 if (empty($shops)) {
                     // Hvis der ikke findes noget resultat
                     echo '

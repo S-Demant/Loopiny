@@ -8,7 +8,7 @@ require "../settings/init.php";
 <head>
     <meta charset="utf-8">
 
-    <title>Loopiny Privat - Indstillinger</title>
+    <title>Loopiny Erhverv - Indstillinger</title>
 
     <meta name="robots" content="All">
     <meta name="author" content="Udgiver">
@@ -52,26 +52,34 @@ require "../settings/init.php";
                             </select>
                         </div>
                     </div>
+                </div>
+                <button type="submit" class="btn btn-primary fw-semibold rounded-3 px-5 py-2 mt-2">Gem indstillinger</button>
+            </form>
+
+            <h2 class="fw-semibold mt-5 mb-3">Oplysninger om butikken</h2>
+            <form>
+                <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
-                            <label for="location" class="form-label fw-semibold">Lokation</label>
-                            <select class="form-select" aria-label="location">
-                                <option>Vælg din lokation</option>
-                                <option selected value="4200">4200 Slagelse</option>
-                                <option value="4300">4300 Holbæk</option>
-                                <option value="4400">4400 Kalundborg</option>
+                            <label for="shopName" class="form-label">Butikkens navn</label>
+                            <input type="text" class="form-control" id="shopName" aria-describedby="Butikkens navn" placeholder="Butikkens navn" value="Power Slagelse">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="city" class="form-label fw-semibold">Postnummer, by</label>
+                            <select class="form-select" aria-label="city">
+                                <option>Vælg butikkens lokation</option>
+                                <option value="4200" selected>4200, Slagelse</option>
+                                <option value="4300">4300, Holbæk</option>
+                                <option value="4400">4400, Kalundborg</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
-                            <label for="distance" class="form-label fw-semibold">Afstand</label>
-                            <select class="form-select" aria-label="distance">
-                                <option>Vælg maks afstand fra lokation</option>
-                                <option value="1">Inden for 1 km.</option>
-                                <option selected value="3">Inden for 3 km.</option>
-                                <option value="5">Inden for 5 km.</option>
-                            </select>
+                            <label for="shopAdress" class="form-label">Butikkens Adresse</label>
+                            <input type="text" class="form-control" id="shopAdress" aria-describedby="Butikkens adresse" placeholder="Butikkens adresse" value="Japanvej 8, 4200 Slagelse">
                         </div>
                     </div>
                 </div>
@@ -83,25 +91,8 @@ require "../settings/init.php";
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Navn</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="Dit navn" placeholder="Dit navn" value="Jens Jensen">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
                             <label for="mail" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="mail" aria-describedby="Din e-mail" placeholder="Din e-mail" value="jensen@prototype.dk">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="mb-3">
-                            <label for="gender" class="form-label fw-semibold">Køn</label>
-                            <select class="form-select" aria-describedby="Vælg dit køn" aria-label="gender">
-                                <option selected>Intet køn valgt</option>
-                                <option value="k">Kvinde</option>
-                                <option value="m">Mand</option>
-                                <option value="a">Andet</option>
-                            </select>
+                            <input type="email" class="form-control" id="mail" aria-describedby="Din e-mail" placeholder="Din e-mail" value="slagelse@power.dk">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -115,9 +106,9 @@ require "../settings/init.php";
             </form>
 
             <h2 class="fw-semibold mt-5 mb-3">Support</h2>
-            <span>E-mail: mail@loopiny.com</span>
+            <span>E-mail: support@loopiny.com</span>
             <br>
-            <span>Tlf.: 30 26 46 82</span>
+            <span>Tlf.: 20 46 12 13</span>
 
             <h2 class="fw-semibold mt-5 mb-3">Slet</h2>
             <button id="delete" class="btn btn-outline-dark fw-semibold rounded-3 py-2 px-5 mt-2">Slet profil permanent</button>
