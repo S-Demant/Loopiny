@@ -20,7 +20,7 @@
                         <div class="position-relative align-content-center w-100 pt-1">
                             <object type="image/svg+xml" data="../img/icons/statistic.svg" class="icons mb-1"></object>
                             <br>
-                            <a href="#" class="stretched-link text-dark" title="Oversigt over statistikker" aria-label="Statistik">Statistik</a>
+                            <a href="statistic.php" class="stretched-link text-dark" title="Oversigt over statistikker" aria-label="Statistik">Statistik</a>
                         </div>
                         <div class="align-self-center border-end border-opacity-10 border-dark h-75"></div>
                         <div class="position-relative align-content-center w-100 pt-1">
