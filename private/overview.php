@@ -134,6 +134,45 @@ require "../settings/init.php";
         </div>
     </section>
 
+    <section>
+        <div class="container">
+            <div class="text-center mt-5">
+                <h2 class="text-primary fw-semibold mb-1">Statistik over din Loopiny</h2>
+            </div>
+            <div class="row g-3 mt-2">
+                <?php
+                $sql = "SELECT COUNT(productId) AS savedProductCount FROM products WHERE productPickedUp = '1'";
+                $result = $db->sql($sql);
+
+                // Hent første række fra resultatet
+                if (!empty($result)) {
+                    $countRow = $result[0]; // Første objekt i array
+                    $savedProductCount = $countRow->savedProductCount; // Brug egenskaben direkte
+                } else {
+                    $savedProductCount = 'Ingen data';
+                }
+
+                // Udregn antal træer plantet
+                $treesPlanted = $savedProductCount / 4;
+                ?>
+                <div class="col-12 col-sm-6">
+                    <div class="text-center w-100">
+                        <object type="image/svg+xml" data="../img/icons/tag.svg" class="static-icon"></object>
+                        <p class="fw-semibold mb-1">Produkter reddet fra destruktion</p>
+                        <h1 class="fw-bold mb-3"><?php echo $savedProductCount ?> stk.</h1>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="text-center w-100">
+                        <object type="image/svg+xml" data="../img/icons/tree.svg" class="static-icon"></object>
+                        <p class="fw-semibold mb-1">Antal træer plantet med Loopiny</p>
+                        <h1 class="fw-bold mb-3"><?php echo $treesPlanted ?> stk.</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </article>
 
 
