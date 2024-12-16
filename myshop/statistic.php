@@ -76,7 +76,7 @@ require "../settings/init.php";
             </div>
             <div class="row g-3 mt-2">
                 <?php
-                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN shops ON shopId = productShopId WHERE productPickedUp = 1 AND shopId = 1 GROUP BY productId ORDER BY productId DESC");
+                $products = $db->sql("SELECT *, GROUP_CONCAT(conditionTitle SEPARATOR ', ') AS conditionTitle FROM products INNER JOIN connect_for_products ON productId = productIdConnect INNER JOIN conditions ON conditionId = conditionIdConnect INNER JOIN shops ON shopId = productShopId WHERE productPickedUp = 1 AND shopId = 5 GROUP BY productId ORDER BY productId DESC");
                 if (empty($products)) {
                     // Hvis der ikke findes noget resultat
                     echo '
