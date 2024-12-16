@@ -113,36 +113,51 @@ require "settings/init.php";
 <div class="container-fluid" style="background-image: url('img/loopiny/hero-texture.webp'); background-color: #304229" >
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <!-- Venstre links -->
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#">Vores tjeneste</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Vores vision</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Om Loopiny</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Blogindlæg</a></li>
-            </ul>
-
-            <!-- Logo i midten -->
-            <a class="navbar-brand position-absolute start-50 translate-middle-x" href="#">
+        <div class="container-fluid">
+            <!-- Logo i midten (mobil og desktop) -->
+            <a class="navbar-brand mx-auto d-lg-none" href="#">
                 <img src="img/loopiny/loopiny%20logo%20uden%20tekst.png" alt="Loopiny Logo" style="height: 50px;">
             </a>
 
-            <!-- Højre links -->
-            <div class="d-flex align-items-center">
-                <button class="btn btn-outline-light ms-2">Loopiny Privat</button>
-                <button class="btn btn-outline-light ms-2">Loopiny Erhverv</button>
-                <div class="dropdown ms-3">
-                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
-                        Dansk
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Dansk</a></li>
-                        <li><a class="dropdown-item" href="#">English</a></li>
-                    </ul>
+            <!-- Navbar Toggler til mobil -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Indholdet af navbaren -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Venstre links -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Vores tjeneste</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Vores vision</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Om Loopiny</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blogindlæg</a></li>
+                </ul>
+
+                <!-- Logo i midten til større skærme -->
+                <a class="navbar-brand position-absolute d-none d-lg-block start-50 translate-middle-x" href="#">
+                    <img src="img/loopiny/loopiny%20logo%20uden%20tekst.png" alt="Loopiny Logo" style="height: 50px;">
+                </a>
+
+                <!-- Højre links -->
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-outline-light ms-2">Loopiny Privat</button>
+                    <button class="btn btn-outline-light ms-2">Loopiny Erhverv</button>
+                    <div class="dropdown ms-3">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
+                            Dansk
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Dansk</a></li>
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
+
 
 
     <!-- Hero Section -->
