@@ -187,20 +187,18 @@ require "settings/init.php";
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h2>Loopiny</h2>
+                <h2> Red produkter. Red planeten</h2>
 
                 <p>
-                    Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus.
-                    Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit. Fusce a diam dapibus ligula
-                    faucibus volutpat. Nunc venenatis odio est, ac consectetur magna efficitur eu. Proin sit amet massa
-                    turpis. In vulputate, nulla id ultrices feugiat, est diam mattis dolor, nec pharetra turpis ligula
-                    nec arcu.
-
+                    Vidste du, at utallige varer går til spilde, blot fordi de ikke kan sælges i almindelige butikker? Med Loopiny kan du give disse produkter en ny chance og gøre en positiv forskel for miljøet.
                 </p>
 
-                <p><strong>                    Proin vestibulum, erat a consequat malesuada, diam justo molestie tellus,
-                        eget iaculis nunc orci a magna. Nunc fermentum pellentesque convallis. Integer id massa eget
-                        tellus mollis tristique. Nam vitae leo vitae quam viverra scelerisque sit amet vel nisi.
+                <p>
+                    Ved at redde usælgelige varer til en brøkdel af prisen hjælper du med at reducere spild og støtte en grønnere fremtid.
+                </p>
+
+
+                <p><strong>                      Download Loopiny i dag og vær med i bevægelsen, der gør verdenen grønnere – ét køb ad gangen!
                     </strong></p>
                 <button class="btn btn-success mt-3">Kom i gang</button>
             </div>
@@ -239,11 +237,6 @@ require "settings/init.php";
                 Med Loopiny gør vi det muligt at forvandle små fejl til store muligheder.
 
 
-                Hvert år kasseres store mængder ikke-fødevareprodukter i detailhandlen på grund af små fejl, beskadigelse eller overskud. Eksempelvis smides 677 tons nyt tøj ud årligt i Danmark, ofte fordi returvarer og overproduktion gør det billigere at destruere tøjet end at donere det.
-                I Europa anslås det, at op til 9% af alle tekstiler ødelægges, før de når forbrugeren, og at en tredjedel af returnerede varer købt online ender som affald. Dette kalder på smartere håndtering og mere bevidste valg, hvor produkter får en ny chance fremfor at gå tabt. Loopiny arbejder for at give varer nyt liv – til glæde for miljøet og os alle.
-
-
-                Hos Loopiny er vores vision at skabe en smartere og mere ansvarlig fremtid, hvor produkter får nyt liv i stedet for at gå til spilde. Vi arbejder ud fra tre kerneværdier – Environment (miljø), Social (social ansvarlighed) og Governance (god virksomhedsdrift) – for at gøre en positiv forskel.
 
             </p>
             <br><br><br><br><br><br><br>
@@ -270,31 +263,37 @@ require "settings/init.php";
         <!-- Første content-section -->
         <div class="col-lg-6 content-section d-flex flex-column justify-content-center"
              style="background-color: #304229; color: #F5F5F0; padding: 2rem; padding-top: 200px">
-            <h3>Underoverskrift</h3>
+            <h3>ESG</h3>
             <p>
-                Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus. Duis molestie porta neque vitae commodo. Donec maximus volutpat blandit.
+
+                Hos Loopiny er vores vision at skabe en smartere og mere ansvarlig fremtid, hvor produkter får nyt liv i stedet for at gå til spilde. Vi arbejder ud fra tre kerneværdier – Environment (miljø), Social (social ansvarlighed) og Governance (god virksomhedsdrift) – for at gøre en positiv forskel.
+
             </p>
             <ul>
-                <li>Proin sit amet massa turpis</li>
-                <li>Nunc venenatis odio est</li>
-                <li>Duis molestie</li>
-                <li>Ac consectetur magna</li>
-                <li>Nec pharetra</li>
-            </ul>
-            <p>
-                Proin sit amet massa turpis. In vulputate, nulla id ultrices feugiat, est diam mattis dolor, nec pharetra turpis ligula nec arcu.
-            </p>
+                <li>Environment (Miljø):
+                    Vi giver varer med små fejl eller overskudslager en ny chance, så de ikke ender som affald. Ved at reducere spild og fremme smartere ressourceudnyttelse tager vi ansvar for vores planets fremtid.
+                </li>
+                <li>Social (Social ansvarlighed):
+                    Vi tror på værdien af fællesskab og ansvarlige handlinger. Vores platform forbinder butikker og forbrugere, som ønsker at træffe bevidste valg og skabe en positiv forandring sammen.
+                </li>
+                <li>Governance (Etisk virksomhedsdrift):
+                    Gennemsigtighed og ansvarlig ledelse er hjørnestenen i Loopiny. Vi arbejder med klare retningslinjer og et etisk fokus for at opbygge tillid og skabe langsigtet værdi for alle interessenter.
+                </li>
+
+
         </div>
         <!-- Anden content-section -->
         <div class="col-lg-6 content-section d-flex flex-column justify-content-center"
              style="background-color: #46643c; color: #F5F5F0; padding: 2rem; padding-top: 200px">
-            <h3>Underoverskrift</h3>
+            <h3>Mindsk spild</h3>
             <p>
-                Cras tristique diam a ligula hendrerit tincidunt. Nam a fermentum justo. Nulla facilisi. Donec euismod a mauris at laoreet. Proin in felis faucibus, mattis dolor a, lacinia dui.
+                Hvert år kasseres store mængder ikke-fødevareprodukter i detailhandlen på grund af små fejl, beskadigelse eller overskud. Eksempelvis smides 677 tons nyt tøj ud årligt i Danmark, ofte fordi returvarer og overproduktion gør det billigere at destruere tøjet end at donere det.
+                I Europa anslås det, at op til 9% af alle tekstiler ødelægges, før de når forbrugeren, og at en tredjedel af returnerede varer købt online ender som affald. Dette kalder på smartere håndtering og mere bevidste valg, hvor produkter får en ny chance fremfor at gå tabt. Loopiny arbejder for at give varer nyt liv – til glæde for miljøet og os alle.
+
+
             </p>
-            <p>
-                Ut nibh diam, dignissim eget scelerisque nec, venenatis a sapien. Aliquam euismod efficitur enim, sit amet molestie massa tincidunt.
-            </p>
+
+
             <button class="btn btn-outline-light mt-3">Kom med ombord</button>
         </div>
     </div>
@@ -354,10 +353,10 @@ require "settings/init.php";
         <div class="row g-4 align-items-center">
             <!-- Venstre små bokse rykket mod højre -->
             <div class="col-md-2 offset-md-1 d-flex justify-content-center">
-                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"></div>
+                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"> <img src="img/Logoer/bcopr-2.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
-                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"></div>
+                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"> <img src="img/Logoer/Amfori%20logo.png" style="width: 100%; height: 100%; object-fit: cover;"> </div>
             </div>
             <!-- Højre tekst -->
             <div class="col-md-7">
