@@ -56,8 +56,8 @@ require "settings/init.php";
                 </div>
             </div>
             <div class="position-absolute top-0 end-0 me-2 me-md-0 d-flex gap-2">
-                <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Privat</a>
-                <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Erhverv</a>
+                <a href="private/discover.php" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Privat</a>
+                <a href="myshop/myproducts.php" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Erhverv</a>
                 <div class="dropdown language-out">
                     <button class="btn fw-semibold link-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">Dansk</button>
                     <ul class="dropdown-menu">
@@ -84,10 +84,10 @@ require "settings/init.php";
                     </div>
                     <div class="row justify-content-center my-3">
                         <div class="col-12 col-md-6 col-xl-4">
-                            <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold w-100 py-3">Opdag nye produkter</a>
+                            <a href="private/discover.php" class="btn btn-loop btn-outline-light border-2 fw-semibold w-100 py-3">Opdag nye produkter</a>
                         </div>
                         <div class="col-12 col-md-6 col-xl-4 mt-3 mt-md-0">
-                            <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold w-100 py-3">Benyt Loopiny Erhverv</a>
+                            <a href="myshop/myproducts.php" class="btn btn-loop btn-outline-light border-2 fw-semibold w-100 py-3">Benyt Loopiny Erhverv</a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ require "settings/init.php";
                     <h2 class="fw-semibold">Red produkter. Red planeten</h2>
                     <p>Vidste du, at utallige varer går til spilde, blot fordi de ikke kan sælges i almindelige butikker? Med Loopiny kan du give disse produkter en ny chance og gøre en positiv forskel for miljøet. Ved at redde usælgelige varer til en brøkdel af prisen hjælper du med at reducere spild og støtte en grønnere fremtid.</p>
                     <p class="fw-semibold">Download Loopiny i dag og vær med i bevægelsen, der gør verdenen grønnere – ét køb ad gangen!</p>
-                    <a href="#" class="btn btn-primary rounded-3 fw-semibold py-2 px-4">Kom i gang</a>
+                    <a href="private/discover.php" class="btn btn-primary rounded-3 fw-semibold py-2 px-4">Kom i gang</a>
                 </div>
                 <div class="col-12 col-md-6 mb-3 mb-md-0 order-0 order-md-1">
                     <img src="img/loopiny/vision.webp" class="img-fluid" alt="Infografik for Loopiny tjenesten">
@@ -141,7 +141,7 @@ require "settings/init.php";
                     <div class="col-12 col-md-6 py-md-5 ps-md-5 position-relative">
                         <h2 class="fw-semibold text-light">Mindsk spild</h2>
                         <p class="text-light">Hvert år kasseres store mængder ikke-fødevareprodukter i detailhandlen på grund af små fejl, beskadigelse eller overskud. Eksempelvis smides 677 tons nyt tøj ud årligt i Danmark, ofte fordi returvarer og overproduktion gør det billigere at destruere tøjet end at donere det. I Europa anslås det, at op til 9% af alle tekstiler ødelægges, før de når forbrugeren, og at en tredjedel af returnerede varer købt online ender som affald. Dette kalder på smartere håndtering og mere bevidste valg, hvor produkter får en ny chance fremfor at gå tabt. Loopiny arbejder for at give varer nyt liv – til glæde for miljøet og os alle.</p>
-                        <a href="#" class="btn btn-outline-light rounded-3 fw-semibold py-2 px-4">Kom med ombord</a>
+                        <a href="private/discover.php" class="btn btn-outline-light rounded-3 fw-semibold py-2 px-4">Kom med ombord</a>
                     </div>
                 </div>
             </div>
