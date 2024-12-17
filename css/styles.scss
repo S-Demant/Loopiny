@@ -115,6 +115,10 @@ header {
 	}
 }
 
+#tjeneste, #vision, #om, #blog {
+	scroll-margin-top: 100px;
+}
+
 // hero
 .hero {
 	margin: 0;
@@ -158,23 +162,26 @@ header {
 
 	@include breakpoint($medium) {
 		background: linear-gradient(
-										to left,
-										$secondary 0%,
-										$secondary 50%,
-										$primary 50%,
-										$primary 100%
+			to left,
+			$secondary 0%,
+			$secondary 50%,
+			$primary 50%,
+			$primary 100%
 		);
 	}
 }
 
 video {
-	height: 700px;
+	width: 90%;
+	height: auto;
 
-	@include breakpoint($medium) {
-		height: 500px;
+	@include breakpoint($small) {
+		width: auto;
+		height: 600px;
 	}
 
 	@include breakpoint($large) {
+		width: auto;
 		height: 700px;
 	}
 }
@@ -192,30 +199,30 @@ video {
 // footer
 .footer-bg {
 	background: linear-gradient(
-									to bottom,
-									$light 0%,
-									$light 10%,
-									$primary 10%,
-									$primary 100%
+		to bottom,
+		$light 0%,
+		$light 10%,
+		$primary 10%,
+		$primary 100%
 	);
 
 	@include breakpoint($medium) {
 		background: linear-gradient(
-										to bottom,
-										$light 0%,
-										$light 15%,
-										$primary 15%,
-										$primary 100%
+			to bottom,
+			$light 0%,
+			$light 15%,
+			$primary 15%,
+			$primary 100%
 		);
 	}
 
 	@include breakpoint($large) {
 		background: linear-gradient(
-										to bottom,
-										$light 0%,
-										$light 25%,
-										$primary 25%,
-										$primary 100%
+			to bottom,
+			$light 0%,
+			$light 25%,
+			$primary 25%,
+			$primary 100%
 		);
 	}
 }

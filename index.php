@@ -34,16 +34,16 @@ require "settings/init.php";
                 <div class="d-flex justify-content-between w-100">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item me-3 me-lg-0">
-                            <a class="nav-link fw-semibold" href="#">Vores tjeneste</a>
+                            <a class="nav-link fw-semibold" href="#tjeneste">Vores tjeneste</a>
                         </li>
                         <li class="nav-item me-3 me-lg-0 mx-lg-4">
-                            <a class="nav-link fw-semibold" href="#">Vores vision</a>
+                            <a class="nav-link fw-semibold" href="#vision">Vores vision</a>
                         </li>
                         <li class="nav-item me-3 me-lg-0 mx-lg-4">
-                            <a class="nav-link fw-semibold" href="#">Om Loopiny</a>
+                            <a class="nav-link fw-semibold" href="#om">Om Loopiny</a>
                         </li>
                         <li class="nav-item me-lg-0 ms-lg-4">
-                            <a class="nav-link fw-semibold" href="#">Blogindlæg</a>
+                            <a class="nav-link fw-semibold" href="#blog">Blogindlæg</a>
                         </li>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@ require "settings/init.php";
                     </ul>
                 </div>
             </div>
-            <div class="position-absolute top-0 end-0 d-flex gap-2">
+            <div class="position-absolute top-0 end-0 me-2 me-md-0 d-flex gap-2">
                 <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Privat</a>
                 <a href="#" class="btn btn-loop btn-outline-light border-2 fw-semibold px-3 py-2">Loopiny Erhverv</a>
                 <div class="dropdown language-out">
@@ -96,18 +96,11 @@ require "settings/init.php";
     </div>
 </section>
 
-
-<!-- Lightmode Switch -->
-<div class="lightmode-switch">
-    <button class="btn btn-outline-light">Lightmode</button>
-</div>
-
-
 <article>
     <section class="mt-4">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6 order-1 order-md-0">
+                <div id="tjeneste" class="col-12 col-md-6 order-1 order-md-0">
                     <h2 class="fw-semibold">Red produkter. Red planeten</h2>
                     <p>Vidste du, at utallige varer går til spilde, blot fordi de ikke kan sælges i almindelige butikker? Med Loopiny kan du give disse produkter en ny chance og gøre en positiv forskel for miljøet. Ved at redde usælgelige varer til en brøkdel af prisen hjælper du med at reducere spild og støtte en grønnere fremtid.</p>
                     <p class="fw-semibold">Download Loopiny i dag og vær med i bevægelsen, der gør verdenen grønnere – ét køb ad gangen!</p>
@@ -126,7 +119,7 @@ require "settings/init.php";
     <section class="mt-5">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6 text-center">
+                <div id="vision" class="col-12 col-md-8 col-lg-6 text-center">
                     <h2 class="fw-semibold">Visionen bag</h2>
                     <p>Hos Loopiny drømmer vi om en verden, hvor varer med små fejl eller mangler ikke går til spilde, men i stedet får en ny chance. Vi ønsker at skabe en platform, der forbinder butikker med kunder, som ser værdien i det uperfekte. Vores vision er at gøre det nemt og tilgængeligt for alle at tage et mere ansvarligt valg, når de handler. Hver plet, ridse eller returvare har en historie, og vi hjælper med at sikre, at den ikke slutter for tidligt. Sammen kan vi mindske spild, udnytte ressourcerne bedre og samtidig tilbyde kunder unikke fund til gode priser. Med Loopiny gør vi det muligt at forvandle små fejl til store muligheder.</p>
                 </div>
@@ -160,13 +153,13 @@ require "settings/init.php";
             <div class="row justify-content- mt-5">
                 <div class="col-12 col-md-6 pt-0 pe-0 me-0">
                     <div class="text-center text-md-end pe-md-5">
-                        <video controls class="bg-light shadow p-3 mt-4">
+                        <video controls class="bg-light shadow p-3 mt-4 mb-4 mb-md-0">
                             <source src="loopiny-video.mp4" type="video/mp4">
                             Din browser understøtter ikke videoelementet.
                         </video>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 ps-md-5">
+                <div id="om" class="col-12 col-md-6 ps-md-5">
                     <h2 class="fw-semibold mt-4">Hvem er Loopiny?</h2>
                     <p>
                         Loopiny er en innovativ platform og applikation, der skaber en bro mellem butikker og kunder med
@@ -224,7 +217,7 @@ require "settings/init.php";
 
 <footer>
     <div class="container-fluid footer-bg mt-5">
-        <div class="container">
+        <div id="blog" class="container">
             <h2 class="fw-semibold text-center mb-4">Bliv inspireret af vores blogindlæg</h2>
             <div class="row gy-3">
                 <div class="col-12 col-md-6 col-lg-3">
