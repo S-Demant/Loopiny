@@ -107,13 +107,13 @@ require "settings/init.php";
     <section class="mt-4">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 order-1 order-md-0">
                     <h2 class="fw-semibold">Red produkter. Red planeten</h2>
                     <p>Vidste du, at utallige varer går til spilde, blot fordi de ikke kan sælges i almindelige butikker? Med Loopiny kan du give disse produkter en ny chance og gøre en positiv forskel for miljøet. Ved at redde usælgelige varer til en brøkdel af prisen hjælper du med at reducere spild og støtte en grønnere fremtid.</p>
                     <p class="fw-semibold">Download Loopiny i dag og vær med i bevægelsen, der gør verdenen grønnere – ét køb ad gangen!</p>
                     <a href="#" class="btn btn-primary rounded-3 fw-semibold py-2 px-4">Kom i gang</a>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mb-3 mb-md-0 order-0 order-md-1">
                     <img src="img/loopiny/vision.webp" class="img-fluid" alt="Infografik for Loopiny tjenesten">
                 </div>
             </div>
@@ -126,7 +126,7 @@ require "settings/init.php";
     <section class="mt-5">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-6 text-center">
+                <div class="col-12 col-md-8 col-lg-6 text-center">
                     <h2 class="fw-semibold">Visionen bag</h2>
                     <p>Hos Loopiny drømmer vi om en verden, hvor varer med små fejl eller mangler ikke går til spilde, men i stedet får en ny chance. Vi ønsker at skabe en platform, der forbinder butikker med kunder, som ser værdien i det uperfekte. Vores vision er at gøre det nemt og tilgængeligt for alle at tage et mere ansvarligt valg, når de handler. Hver plet, ridse eller returvare har en historie, og vi hjælper med at sikre, at den ikke slutter for tidligt. Sammen kan vi mindske spild, udnytte ressourcerne bedre og samtidig tilbyde kunder unikke fund til gode priser. Med Loopiny gør vi det muligt at forvandle små fejl til store muligheder.</p>
                 </div>
@@ -135,8 +135,8 @@ require "settings/init.php";
 
         <div class="container-fluid green-gradient mt-3">
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 py-5 pe-5">
+                <div class="row py-5 py-md-0">
+                    <div class="col-12 col-md-6 py-md-5 pe-md-5">
                         <h2 class="fw-semibold text-light">Vores tre kerneværdier</h2>
                         <p class="text-light">Hos Loopiny er vores vision at skabe en smartere og mere ansvarlig fremtid, hvor produkter får nyt liv i stedet for at gå til spilde. Vi arbejder ud fra tre kerneværdier – Environment (miljø), Social (social ansvarlighed) og Governance (god virksomhedsdrift) – for at gøre en positiv forskel.</p>
                         <ul class="text-light">
@@ -145,7 +145,7 @@ require "settings/init.php";
                             <li class="py-2"><span class="fw-semibold">Governance (Etisk virksomhedsdrift)</span><br>Gennemsigtighed og ansvarlig ledelse er hjørnestenen i Loopiny. Vi arbejder med klare retningslinjer og et etisk fokus for at opbygge tillid og skabe langsigtet værdi for alle interessenter.</li>
                         </ul>
                     </div>
-                    <div class="col-12 col-md-6 py-5 ps-5 position-relative">
+                    <div class="col-12 col-md-6 py-md-5 ps-md-5 position-relative">
                         <h2 class="fw-semibold text-light">Mindsk spild</h2>
                         <p class="text-light">Hvert år kasseres store mængder ikke-fødevareprodukter i detailhandlen på grund af små fejl, beskadigelse eller overskud. Eksempelvis smides 677 tons nyt tøj ud årligt i Danmark, ofte fordi returvarer og overproduktion gør det billigere at destruere tøjet end at donere det. I Europa anslås det, at op til 9% af alle tekstiler ødelægges, før de når forbrugeren, og at en tredjedel af returnerede varer købt online ender som affald. Dette kalder på smartere håndtering og mere bevidste valg, hvor produkter får en ny chance fremfor at gå tabt. Loopiny arbejder for at give varer nyt liv – til glæde for miljøet og os alle.</p>
                         <a href="#" class="btn btn-outline-light rounded-3 fw-semibold py-2 px-4">Kom med ombord</a>
@@ -159,14 +159,14 @@ require "settings/init.php";
         <div class="container">
             <div class="row justify-content- mt-5">
                 <div class="col-12 col-md-6 pt-0 pe-0 me-0">
-                    <div class="">
+                    <div class="text-center text-md-end pe-md-5">
                         <video controls class="bg-light shadow p-3 mt-4">
                             <source src="loopiny-video.mp4" type="video/mp4">
                             Din browser understøtter ikke videoelementet.
                         </video>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 ps-5">
+                <div class="col-12 col-md-6 ps-md-5">
                     <h2 class="fw-semibold mt-4">Hvem er Loopiny?</h2>
                     <p>
                         Loopiny er en innovativ platform og applikation, der skaber en bro mellem butikker og kunder med
@@ -194,7 +194,7 @@ require "settings/init.php";
     <section>
         <div class="container">
             <div class="row justify-content-center mt-5">
-                <div class="col-12 col-md-6 text-center">
+                <div class="col-12 col-md-10 col-xl-6 text-center">
                     <h2 class="fw-semibold">Identitet og certifikater</h2>
                     <p>
                         Hos Loopiny går vi forrest for at fremme en mere klimavenlig tilgang til forbrug. Vi arbejder
@@ -214,111 +214,98 @@ require "settings/init.php";
                         Ved at vælge Loopiny bidrager du aktivt til en grønnere fremtid og støtter butikker, der arbejder
                         for at reducere deres klimaaftryk. Sammen kan vi gøre en forskel, én vare ad gangen.
                     </p>
+                    <img src="img/certificates/amfori.webp" class="img-fluid mt-2" alt="Amfori certifikat">
+                    <img src="img/certificates/b-corp.webp" class="img-fluid mt-2" alt="B-Corp certifikat">
                 </div>
             </div>
         </div>
     </section>
 </article>
 
-<img src="img/Logoer/bcopr-2.png">
-<img src="img/Logoer/Amfori%20logo.png">
+<footer>
+    <div class="container-fluid footer-bg mt-5">
+        <div class="container">
+            <h2 class="fw-semibold text-center mb-4">Bliv inspireret af vores blogindlæg</h2>
+            <div class="row gy-3">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="loop-card d-flex flex-column bg-primary border border-2 border-secondary shadow position-relative w-100">
+                        <img src="img/blog/blog1.webp" class="img-fluid w-100">
+                        <div class="p-2 mx-1 my-2">
+                            <a href="#" class="stretched-link"><h3 class="fw-semibold text-light">Sammen gør vi en forskel for miljøet</h3></a>
+                            <p class="text-light">I en verden, hvor overforbrug og affald er blevet en voksende udfordring, kan selv små handlinger have en enorm betydning. Hver dag smides tonsvis af genstande væk, som...</p>
 
-
-
-
-
-<!-- Blogindlæg Sektion -->
-<div class="section py-5" style="background-color: #304229">
-    <div class="container">
-        <!-- Overskrift -->
-        <h2 class="text-center mb-5 text-dark">Bliv inspireret af vores blogindlæg</h2>
-
-        <!-- Kort Row -->
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            <!-- Kort 1 -->
-            <div class="col">
-                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
-                    <div class="card-body">
-                        <h5 class="card-title">Blogindlæg 1</h5>
-                        <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="loop-card d-flex flex-column bg-primary border border-2 border-secondary shadow position-relative w-100">
+                        <img src="img/blog/blog2.webp" class="img-fluid w-100">
+                        <div class="p-2 mx-1 my-2">
+                            <a href="#" class="stretched-link"><h3 class="fw-semibold text-light">Børn og klima: Fremtidens ansvar starter i dag</h3></a>
+                            <p class="text-light">Børnene på billedet viser, hvor vigtigt det er at lære den næste generation om at passe på vores planet. Skolen er ikke bare et sted for faglig læring – det er også her, børn udvikler de...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="loop-card d-flex flex-column bg-primary border border-2 border-secondary shadow position-relative w-100">
+                        <img src="img/blog/blog3.webp" class="img-fluid w-100">
+                        <div class="p-2 mx-1 my-2">
+                            <a href="#" class="stretched-link"><h3 class="fw-semibold text-light">Overforbrug af tøj – Når skabet bugner</h3></a>
+                            <p class="text-light">Vidste du, at verdens tekstilproduktion er næsten dobbelt så stor som for bare 20 år siden? Vi producerer mere tøj, end vi nogensinde kan bruge, og store dele af det bliver...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="loop-card d-flex flex-column bg-primary border border-2 border-secondary shadow position-relative w-100">
+                        <img src="img/blog/blog4.webp" class="img-fluid w-100">
+                        <div class="p-2 mx-1 my-2">
+                            <a href="#" class="stretched-link"><h3 class="fw-semibold text-light">CO2 og vores ansvar for fremtiden</h3></a>
+                            <p class="text-light">CO2-aftrykket fra menneskelige aktiviteter vokser år for år og presser vores planet til det yderste. Billedet her symboliserer, hvordan naturen kan hjælpe os med at absorbere CO2...</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Kort 2 -->
-            <div class="col">
-                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
-                    <div class="card-body">
-                        <h5 class="card-title">Blogindlæg 2</h5>
-                        <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
-                    </div>
-                </div>
+            <div class="text-center">
+                <a href="#" class="btn btn-outline-light rounded-3 mt-4 py-2 px-4">Flere blogindlæg</a>
             </div>
-            <!-- Kort 3 -->
-            <div class="col">
-                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
-                    <div class="card-body">
-                        <h5 class="card-title">Blogindlæg 3</h5>
-                        <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Kort 4 -->
-            <div class="col">
-                <div class="card h-100 bg-dark text-white border-2" style="border-color: #46643c">
-                    <div class="card-body">
-                        <h5 class="card-title">Blogindlæg 4</h5>
-                        <p class="card-text">Etiam at nibh viverra, sagittis lacus vel, tempus tortor. Donec eu turpis sed nisi aliquam luctus..</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Knap og pagination -->
-        <div class="text-center mt-5">
-            <button class="btn btn-outline-light">Flere blogindlæg</button>
-            <!-- Pagination dots -->
-            <div class="mt-3">
-                <span class="rounded-circle bg-secondary d-inline-block" style="width: 10px; height: 10px;"></span>
-                <span class="rounded-circle bg-secondary d-inline-block mx-2" style="width: 10px; height: 10px;"></span>
-                <span class="rounded-circle bg-secondary d-inline-block" style="width: 10px; height: 10px;"></span>
+            <div class="text-center py-5">
+                <a href="#" class="mx-2" title="Instagram"><object type="image/svg+xml" data="img/icons/instagram.svg" class="icons"></object></a>
+                <a href="#" class="mx-2" title="Facebook"><object type="image/svg+xml" data="img/icons/facebook.svg" class="icons"></object></a>
+                <a href="#" class="mx-2" title="Linkedin"><object type="image/svg+xml" data="img/icons/linkedin.svg" class="icons"></object></a>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Footer -->
-<footer class="text-white py-5" style="background-color: #46643c">
-    <div class="container">
-        <div class="row">
-            <!-- Support Privat -->
-            <div class="col-md-3 mb-3">
-                <h5>Support privat</h5>
-                <p>Opret Loopiny Privat<br>mail@loopiny.com<br>30 26 46 82</p>
-            </div>
-            <!-- Support Erhverv -->
-            <div class="col-md-3 mb-3">
-                <h5>Support erhverv</h5>
-                <p>Opret Loopiny Erhverv<br>support@loopiny.com<br>20 46 12 13</p>
-            </div>
-            <!-- Dine Rettigheder -->
-            <div class="col-md-3 mb-3">
-                <h5>Dine rettigheder</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Handelsbetingelser</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Privatlivspolitik</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Cookiepolitik</a></li>
-                </ul>
-            </div>
-            <!-- Loopiny Information -->
-            <div class="col-md-3 mb-3">
-                <h5>Loopiny ApS</h5>
-                <p>KristoffersbakKlosterbæk Alle 23<br>4400 Kalundborg<br>CVR: 2534972</p>
+    <div class="container-fluid bg-secondary mt-0">
+        <div class="container">
+            <div class="row py-5">
+                <!-- Support Privat -->
+                <div class="col-md-3 mb-3">
+                    <h3 class="fw-semibold text-light">Support privat</h3>
+                    <p class="text-light">Opret Loopiny Privat<br>mail@loopiny.com<br>30 26 46 82</p>
+                </div>
+                <!-- Support Erhverv -->
+                <div class="col-md-3 mb-3">
+                    <h3 class="fw-semibold text-light">Support erhverv</h3>
+                    <p class="text-light">Opret Loopiny Erhverv<br>support@loopiny.com<br>20 46 12 13</p>
+                </div>
+                <!-- Dine Rettigheder -->
+                <div class="col-md-3 mb-3">
+                    <h3 class="fw-semibold text-light">Dine rettigheder</h3>
+                    <ul class="list-unstyled text-light">
+                        <li><a href="#" class="text-white text-decoration-none">Handelsbetingelser</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privatlivspolitik</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Cookiepolitik</a></li>
+                    </ul>
+                </div>
+                <!-- Loopiny Information -->
+                <div class="col-md-3 mb-3">
+                    <h3 class="fw-semibold text-light">Loopiny ApS</h3>
+                    <p class="text-light">KristoffersbakKlosterbæk Alle 23<br>4400 Kalundborg<br>CVR: 2534972</p>
+                </div>
             </div>
         </div>
-
-        <!-- Copyright -->
-        <div class="text-center mt-4">
-            <p class="mb-0">&copy; 2025 Loopiny ApS. All Rights Reserved</p>
+        <div class="text-center py-2">
+            <p class="text-light opacity-50">&copy; 2025 Loopiny ApS. All Rights Reserved</p>
         </div>
     </div>
 </footer>
