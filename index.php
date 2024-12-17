@@ -153,100 +153,78 @@ require "settings/init.php";
                 </div>
             </div>
         </div>
+    </section>
+
+    <section>
         <div class="container">
-            <div class="text-center mt-3">
-                <video controls class="bg-light shadow p-3 mt-4">
-                    <source src="loopiny-video.mp4" type="video/mp4">
-                    Din browser understøtter ikke videoelementet.
-                </video>
+            <div class="row justify-content- mt-5">
+                <div class="col-12 col-md-6 pt-0 pe-0 me-0">
+                    <div class="">
+                        <video controls class="bg-light shadow p-3 mt-4">
+                            <source src="loopiny-video.mp4" type="video/mp4">
+                            Din browser understøtter ikke videoelementet.
+                        </video>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 ps-5">
+                    <h2 class="fw-semibold mt-4">Hvem er Loopiny?</h2>
+                    <p>
+                        Loopiny er en innovativ platform og applikation, der skaber en bro mellem butikker og kunder med
+                        fokus på genanvendelse af varer med mindre fejl eller mangler. Vi tilbyder en løsning, hvor varer,
+                        der ellers ville blive sat på udsalgsstativer eller kasseret, kan finde nye ejere, der værdsætter
+                        deres funktionalitet og kvalitet.
+
+                    </p>
+                    <p>
+                        Platformen gør det muligt for kunder at reservere varer direkte fra butikkerne og efterfølgende
+                        hente dem på en enkel og overskuelig måde. Varerne kan eksempelvis være fra anden sortering,
+                        returvarer eller produkter med kosmetiske skader, som fortsat er fuldt funktionelle.
+                    </p>
+                    <p>
+                        Loopiny stræber efter at fremme ansvarlig forbrugerkultur ved at minimere spild og maksimere
+                        værdien af eksisterende ressourcer. Vores mission er at skabe en smartere og mere ressourceeffektiv
+                        måde at handle på, hvor både forbrugere og detailhandlen drager fordel.
+                    </p>
+                    <img src="img/loopiny/om-os.webp" class="img-fluid" alt="Om Loopiny">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-12 col-md-6 text-center">
+                    <h2 class="fw-semibold">Identitet og certifikater</h2>
+                    <p>
+                        Hos Loopiny går vi forrest for at fremme en mere klimavenlig tilgang til forbrug. Vi arbejder
+                        aktivt for at reducere spild ved at give varer med små fejl eller mangler en ny chance og dermed
+                        sikre, at ressourcer udnyttes til deres fulde potentiale.
+                    </p>
+                    <p>
+                        Vores samarbejde med butikker inkluderer høje krav til ansvarlighed, og vi samarbejder med
+                        partnere, der deler vores vision om en grønnere fremtid.
+                    </p>
+                    <p>
+                        Loopiny er en del af en større bevægelse mod en mere cirkulær økonomi, hvor varer, der ellers ville
+                        gå til spilde, finder nye ejere. Vores platform gør det nemt for dig at tage et klimavenligt valg i
+                        hverdagen – og samtidig finde unikke varer til gode priser.
+                    </p>
+                    <p>
+                        Ved at vælge Loopiny bidrager du aktivt til en grønnere fremtid og støtter butikker, der arbejder
+                        for at reducere deres klimaaftryk. Sammen kan vi gøre en forskel, én vare ad gangen.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 </article>
 
+<img src="img/Logoer/bcopr-2.png">
+<img src="img/Logoer/Amfori%20logo.png">
 
-<!-- Sektion: Call-to-action -->
-<div class="content-section text-center" style="background-color: #f5f5f0; color: #242424; padding: 2rem;">
-    <div class="container ">
-        <h2>Sammen reducerer vi spild!</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-4" >
-                <div class="content-box1"></div>
-            </div>
-            <div class="col-md-4">
-                <div class="content-box1" ></div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Sektion: Hvem er Loopiny? -->
-<div class="content-section">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="content-box1"></div>
-            </div>
-            <div class="col-md-6">
-                <h2>Hvem er Loopiny?</h2>
-                <p>
-                    Loopiny er en innovativ platform og applikation, der skaber en bro mellem butikker og kunder med
-                    fokus på genanvendelse af varer med mindre fejl eller mangler. Vi tilbyder en løsning, hvor varer,
-                    der ellers ville blive sat på udsalgsstativer eller kasseret, kan finde nye ejere, der værdsætter
-                    deres funktionalitet og kvalitet.
 
-                </p>
-                <p>
-                    Platformen gør det muligt for kunder at reservere varer direkte fra butikkerne og efterfølgende
-                    hente dem på en enkel og overskuelig måde. Varerne kan eksempelvis være fra anden sortering,
-                    returvarer eller produkter med kosmetiske skader, som fortsat er fuldt funktionelle.
-                </p>
-                <p>
-                    Loopiny stræber efter at fremme ansvarlig forbrugerkultur ved at minimere spild og maksimere
-                    værdien af eksisterende ressourcer. Vores mission er at skabe en smartere og mere ressourceeffektiv
-                    måde at handle på, hvor både forbrugere og detailhandlen drager fordel.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Sektion: Identitet og certifikater -->
-<div class="content-section" style="background-color: #f5f5f0; color: #242424; padding: 3rem 0;">
-    <div class="container">
-        <div class="row g-4 align-items-center">
-            <!-- Venstre små bokse rykket mod højre -->
-            <div class="col-md-2 offset-md-1 d-flex justify-content-center">
-                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"> <img src="img/Logoer/bcopr-2.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
-            </div>
-            <div class="col-md-2 d-flex justify-content-center">
-                <div class="content-box" style="width: 100%; height: 150px; background-color: #242424;"> <img src="img/Logoer/Amfori%20logo.png" style="width: 100%; height: 100%; object-fit: cover;"> </div>
-            </div>
-            <!-- Højre tekst -->
-            <div class="col-md-7">
-                <h2>Identitet og certifikater</h2>
-                <p>
-                    Hos Loopiny går vi forrest for at fremme en mere klimavenlig tilgang til forbrug. Vi arbejder
-                    aktivt for at reducere spild ved at give varer med små fejl eller mangler en ny chance og dermed
-                    sikre, at ressourcer udnyttes til deres fulde potentiale.
-                </p>
-                <p>
-                    Vores samarbejde med butikker inkluderer høje krav til ansvarlighed, og vi samarbejder med
-                    partnere, der deler vores vision om en grønnere fremtid.
-                </p>
-                <p>
-                    Loopiny er en del af en større bevægelse mod en mere cirkulær økonomi, hvor varer, der ellers ville
-                    gå til spilde, finder nye ejere. Vores platform gør det nemt for dig at tage et klimavenligt valg i
-                    hverdagen – og samtidig finde unikke varer til gode priser.
-                </p>
-                <p>
-                    Ved at vælge Loopiny bidrager du aktivt til en grønnere fremtid og støtter butikker, der arbejder
-                    for at reducere deres klimaaftryk. Sammen kan vi gøre en forskel, én vare ad gangen.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- Blogindlæg Sektion -->
